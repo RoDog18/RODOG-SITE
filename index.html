@@ -58,10 +58,12 @@
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
   .tags li { font-size: 12px; font-weight: 600; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
 
-  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); }
+  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
   .mini { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
   .mini b { font-size: 18px; display: block; }
   .mini span { color: var(--muted); font-size: 14px; }
+  .cat { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 28px 0 10px; }
+  .mini span { display: block; margin-top: 4px; }
   .mini.more { border-style: dashed; background: transparent; display: grid; place-items: center; text-align: center; color: var(--muted); font-weight: 600; }
 
   .manager { background: var(--dark); color: var(--on-dark); }
@@ -140,28 +142,46 @@
 
   <section id="all" style="padding-top: 0"><div class="wrap">
     <h2 class="display">The whole pack</h2>
-    <p class="sub">Every plugin installs through the Product Manager.</p>
+    <p class="sub">Every plugin installs through the Product Manager. More on the way.</p>
+    <h3 class="cat">Amps</h3>
     <div class="grid">
-      <div class="mini"><b>Abyssdelay</b><span>Delay</span></div>
-      <div class="mini"><b>Acute EQ</b><span>EQ</span></div>
-      <div class="mini"><b>Bloodhound</b><span>Effect</span></div>
-      <div class="mini"><b>Death Rattle</b><span>Effect</span></div>
-      <div class="mini"><b>Drum Dog</b><span>Effect</span></div>
-      <div class="mini"><b>Dubbly Wubbly</b><span>Effect</span></div>
-      <div class="mini"><b>Ectophase</b><span>Effect</span></div>
-      <div class="mini"><b>Fanger</b><span>Flanger</span></div>
-      <div class="mini"><b>Gain Reaper</b><span>Compressor</span></div>
-      <div class="mini"><b>Guard Dog</b><span>Effect</span></div>
-      <div class="mini"><b>Hate Tape</b><span>Effect</span></div>
-      <div class="mini"><b>Macabreverb</b><span>Reverb</span></div>
-      <div class="mini"><b>MatchMe</b><span>EQ matching</span></div>
-      <div class="mini"><b>Necrosynth</b><span>Effect</span></div>
-      <div class="mini"><b>Shell Shock</b><span>Effect</span></div>
-      <div class="mini"><b>ShellGate</b><span>Effect</span></div>
-      <div class="mini"><b>The Brutal</b><span>Effect</span></div>
-      <div class="mini"><b>The Embalmer</b><span>Effect</span></div>
-      <div class="mini"><b>The Subrutal</b><span>Effect</span></div>
-      <div class="mini more">More on the way</div>
+      <div class="mini"><b>The Brutal</b><span>High-gain metal amp with CLEAN, TIGHT and SLUDGE channels, octaver, boost, gate, cab IRs and tape.</span></div>
+      <div class="mini"><b>The Subrutal</b><span>Bass amp running a dirty and a clean path at once, with eight heads, sub synth, IRs and a kick ducker.</span></div>
+    </div>
+    <h3 class="cat">Dynamics</h3>
+    <div class="grid">
+      <div class="mini"><b>Gain Reaper</b><span>Sixteen compressor models on one engine, with side chain and a built-in ducker.</span></div>
+      <div class="mini"><b>Guard Dog</b><span>Clean true peak limiter. With nothing to limit, the output is bit-identical to the input.</span></div>
+      <div class="mini"><b>Shell Shock</b><span>Drum shell clipper with ten HEAT modes, from gentle saturation to hard clipping.</span></div>
+      <div class="mini"><b>ShellGate</b><span>Lookahead bleed gate for kick, snare and tom mics, with key filter and bleed reject.</span></div>
+      <div class="mini"><b>Drum Dog</b><span>Drum prep for multitracks: level every hit, phase-align to a master track, and trigger MIDI.</span></div>
+    </div>
+    <h3 class="cat">EQ</h3>
+    <div class="grid">
+      <div class="mini"><b>Bloodhound</b><span>64-band dynamic EQ with mid/side, three phase modes, and masking shown between instances.</span></div>
+      <div class="mini"><b>The Surgeon</b><span>Resonance suppressor that follows the music, plus four EQ bands you drag on the analyser.</span></div>
+      <div class="mini"><b>MatchMe</b><span>Match EQ: learn a reference and match it, or push away from it, at zero latency.</span></div>
+    </div>
+    <h3 class="cat">Modulation</h3>
+    <div class="grid">
+      <div class="mini"><b>Fanger</b><span>Eight flanger modes, from classic jet sweeps to through-zero and an endless spiral.</span></div>
+      <div class="mini"><b>Ectophase</b><span>Phaser from 4 to 24 stages, with endless sweeps and a mode that follows your playing.</span></div>
+      <div class="mini"><b>Death Rattle</b><span>Tremolo with eight characters, from amp shiver and hard chop to harmonic trem and auto-pan.</span></div>
+      <div class="mini"><b>Dubbly Wubbly</b><span>Doubler with six modes, from a tight double to a crowd, with the low end kept centred.</span></div>
+    </div>
+    <h3 class="cat">Space &amp; time</h3>
+    <div class="grid">
+      <div class="mini"><b>Macabreverb</b><span>Nine reverb spaces with shimmer, freeze, tempo sync and MatchMe on the tail.</span></div>
+      <div class="mini"><b>Abyssdelay</b><span>Seven delay modes, a rhythm pad that writes patterns, prime-number taps and freeze.</span></div>
+    </div>
+    <h3 class="cat">Colour</h3>
+    <div class="grid">
+      <div class="mini"><b>Hate Tape</b><span>Tape and cassette machines, from 2" multitrack to VHS, with wear, wow and flutter, and tape stop.</span></div>
+      <div class="mini"><b>The Embalmer</b><span>Four-band distortion with tube, tape, fuzz, fold and bit-crush flavours per band.</span></div>
+    </div>
+    <h3 class="cat">Instruments</h3>
+    <div class="grid">
+      <div class="mini"><b>Necrosynth</b><span>Synth with five sound engines, one-key chords, a rhythm pad, an arpeggiator and built-in effects.</span></div>
     </div>
   </div></section>
 
