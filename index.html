@@ -4,184 +4,234 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RoDog Plugins</title>
-<meta name="description" content="Audio plugins by RoDog. VST3 and AU for macOS and Windows, installed with the RoDog Product Manager.">
+<meta name="description" content="Audio plugins by RoDog. VST3 and AU for macOS and Windows.">
 <link rel="icon" href="images/rodog-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-  /* Rodog theme: the logo's black, white and silver, with one warm accent */
-  :root {
-    --bg: #f6f5f2; --panel: #ffffff; --ink: #111111; --muted: #5f5f5f; --line: #dddad3;
-    --silver: #c9c9c9; --accent: #e8a33d; --accent-ink: #111111; --dark: #111111; --on-dark: #f6f5f2;
-  }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 Inter, system-ui, sans-serif; }
-  a { color: inherit; }
-  img { max-width: 100%; display: block; }
-  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
-  .display { font-family: "Archivo Black", Inter, sans-serif; font-weight: 400; letter-spacing: -.01em; }
-
-  header { background: var(--panel); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
-  nav { display: flex; justify-content: space-between; align-items: center; height: 68px; gap: 16px; }
-  nav .logo img { height: 44px; width: auto; }
-  nav ul { list-style: none; display: flex; gap: 22px; margin: 0; padding: 0; font-weight: 600; }
-  nav ul a { text-decoration: none; color: var(--muted); }
-  nav ul a:hover { color: var(--ink); }
-
-  .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; background: var(--accent); color: var(--accent-ink);
-    font-weight: 800; text-decoration: none; border: 2px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); transition: transform .1s, box-shadow .1s; }
-  .btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
-  .btn.ghost { background: var(--panel); }
-
-  .hero { padding: 72px 0 64px; }
-  .hero .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
-  .hero h1 { font-size: clamp(38px, 6vw, 64px); line-height: 1.05; margin: 0 0 18px; }
-  .hero p { color: var(--muted); font-size: 18px; margin: 0 0 28px; max-width: 520px; }
-  .hero .actions { display: flex; flex-wrap: wrap; gap: 14px; }
-  .formats { margin-top: 20px; color: var(--muted); font-size: 14px; }
-  .dog { position: relative; }
-  .dog .photo { aspect-ratio: 4 / 5; border-radius: 24px; border: 3px solid var(--ink); box-shadow: 10px 10px 0 var(--ink);
-    background: var(--silver) center / cover no-repeat; display: grid; place-items: center; color: var(--muted); font-weight: 600; overflow: hidden; }
-  .dog .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
-  .dog .badge { position: absolute; left: -18px; bottom: 28px; background: var(--panel); border: 2px solid var(--ink); border-radius: 14px;
-    padding: 10px 14px; font-weight: 800; font-size: 14px; box-shadow: 4px 4px 0 var(--ink); }
-
-  section { padding: 72px 0; }
-  h2 { font-size: clamp(28px, 4vw, 40px); margin: 0 0 8px; }
-  .sub { color: var(--muted); margin: 0 0 32px; }
-
-  .featured { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
-  .card { background: var(--panel); border: 2px solid var(--ink); border-radius: 18px; padding: 24px; box-shadow: 6px 6px 0 var(--ink); }
-  .card .type { text-transform: uppercase; font-size: 12px; letter-spacing: .12em; color: var(--muted); font-weight: 800; }
-  .card h3 { font-size: 28px; margin: 4px 0 10px; }
-  .card p { color: var(--muted); margin: 0 0 16px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
-  .tags li { font-size: 12px; font-weight: 600; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
-
-  .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
-  .mini { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
-  .mini b { font-size: 18px; display: block; }
-  .mini span { color: var(--muted); font-size: 14px; }
-  .cat { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 28px 0 10px; }
-  .mini span { display: block; margin-top: 4px; }
-  .mini.more { border-style: dashed; background: transparent; display: grid; place-items: center; text-align: center; color: var(--muted); font-weight: 600; }
-
-  .manager { background: var(--dark); color: var(--on-dark); }
-  .manager .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-  .manager .sub { color: #b5b5b5; }
-  .manager ol { margin: 0 0 28px; padding-left: 20px; color: #d8d8d8; }
-  .manager li { margin-bottom: 8px; }
-  .manager .btn { border-color: var(--on-dark); box-shadow: 4px 4px 0 var(--on-dark); }
-  .manager .btn:hover { box-shadow: 2px 2px 0 var(--on-dark); }
-  .manager .logo-big { background: var(--on-dark); border-radius: 24px; padding: 32px; }
-
-  footer { padding: 32px 0; color: var(--muted); font-size: 14px; }
-  footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-  footer img { height: 32px; width: auto; }
-
-  @media (max-width: 760px) {
-    .hero .wrap, .manager .wrap { grid-template-columns: 1fr; gap: 32px; }
-    .dog { max-width: 360px; }
-    .dog .badge { left: 12px; }
-    nav ul { gap: 14px; font-size: 14px; }
-    nav ul li.hide-sm { display: none; }
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header><div class="wrap"><nav>
-  <a class="logo" href="#"><img src="images/rodog-logo.png" alt="RoDog"></a>
+<header class="top"><div class="wrap"><nav>
+  <a class="logo" href="index.html"><img src="images/rodog-logo.png" alt="RoDog"></a>
   <ul>
-    <li><a href="#plugins">Plugins</a></li>
-    <li class="hide-sm"><a href="#all">All plugins</a></li>
-    <li><a href="#download">Download</a></li>
+    <li><a href="index.html#plugins">Plugins</a></li>
+    <li><a href="index.html#download">Download</a></li>
+    <li><a class="cart" href="#" aria-disabled="true" title="Shop coming soon">Cart (0)</a></li>
   </ul>
 </nav></div></header>
 
 <main>
-  <div class="hero"><div class="wrap">
-    <div>
-      <h1 class="display">Good plugins.<br>Good dog.</h1>
-      <p>RoDog makes audio plugins for producers: reverbs, delays, compressors, EQs, synths and plenty more. Grab the RoDog Product Manager and install the whole pack in one go.</p>
+  <section class="hero">
+    <div class="wrap">
+      <h1 class="sr">RoDog</h1>
+      <img class="biglogo" src="images/rodog-logo.png" alt="RoDog">
+      <p class="lead">Audio plugins for producers. 23 plugins and counting, installed with the RoDog Product Manager.</p>
       <div class="actions">
-        <a class="btn" href="#download">Get the Product Manager</a>
-        <a class="btn ghost" href="#plugins">See the plugins</a>
+        <a class="btn" href="#plugins">See the plugins</a>
+        <a class="btn ghost" href="#download">Get the Product Manager</a>
       </div>
       <div class="formats">VST3 &amp; AU · macOS &amp; Windows</div>
     </div>
-    <div class="dog">
-      <div class="photo"><img src="images/dog.jpg" alt="RoDog's dog sitting on a wooden floor, looking up"></div>
-      <div class="badge">Head of quality control 🐾</div>
-    </div>
-  </div></div>
+  </section>
 
   <section id="plugins"><div class="wrap">
-    <h2 class="display">Featured</h2>
-    <p class="sub">A few favourites from the pack.</p>
-    <div class="featured">
-      <article class="card">
-        <div class="type">Reverb</div>
-        <h3 class="display">Macabreverb</h3>
-        <p>Nine spaces, from ROOM and PLATE to CATHEDRAL and REVERSE, with shimmer, freeze and tempo-synced length. MatchMe is built in, so the tail can be matched to your dry signal.</p>
-        <ul class="tags"><li>9 spaces</li><li>Shimmer</li><li>Freeze</li><li>MatchMe built in</li><li>Tempo sync</li></ul>
-      </article>
-      <article class="card">
-        <div class="type">Flanger</div>
-        <h3 class="display">Fanger</h3>
-        <p>Eight flanger modes, from the classic JET sweep and through-zero tape flanging to an endless rising SPIRAL. Free or synced rate, five LFO shapes and side chain.</p>
-        <ul class="tags"><li>8 modes</li><li>Through-zero</li><li>5 LFO shapes</li><li>Side chain</li></ul>
-      </article>
-      <article class="card">
-        <div class="type">Compressor</div>
-        <h3 class="display">Gain Reaper</h3>
-        <p>Sixteen compressor models on one engine, each inspired by a studio classic, plus side chain and a built-in ducker.</p>
-        <ul class="tags"><li>16 models</li><li>Side chain</li><li>Ducker</li></ul>
-      </article>
+    <h2 class="display">Plugins</h2>
+    <div class="tabs" role="tablist"><button class="tab on" data-tab="all">All</button><button class="tab" data-tab="evil">EVIL series</button><button class="tab" data-tab="lab">LAB series</button><button class="tab" data-tab="howl">HOWL series</button><button class="tab" data-tab="brutal">Brutal FX</button><button class="tab" data-tab="studio">Studio</button><button class="tab" data-tab="amps">Amps</button></div>
+    <p class="blurb" data-blurb="evil" hidden>Dark, animated effects with eight modes each.</p><p class="blurb" data-blurb="lab" hidden>Clean, surgical tools for mixing and drum prep.</p><p class="blurb" data-blurb="howl" hidden>Clean and goofy reverbs, one space per plugin, with the howling dog.</p><p class="blurb" data-blurb="brutal" hidden>Effects born from The Brutal and grown into their own plugins.</p><p class="blurb" data-blurb="studio" hidden>Everyday mixing tools: dynamics, gates and matching.</p><p class="blurb" data-blurb="amps" hidden>Guitar and bass amps with full effects racks.</p>
+    <div class="pgrid">
+      <a class="pcard" href="plugins/fanger.html" data-series="evil">
+        <div class="pmedia"><img class="shot" src="images/plugins/fanger/shot-fanger-main.jpg" alt="Fanger plugin"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-evil">EVIL series</span><span>Flanger</span></div>
+          <h3 class="display">Fanger</h3>
+          <p>Eight flavours of flange, from classic jet sweeps to through-zero tape and an endless spiral.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/death-rattle.html" data-series="evil">
+        <div class="pmedia"><img class="art" src="images/plugins/death-rattle/rattle-snake.jpg" alt="Death Rattle display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-evil">EVIL series</span><span>Tremolo</span></div>
+          <h3 class="display">Death Rattle</h3>
+          <p>A tremolo with eight afflictions, from amp shiver and hard chop to harmonic trem and auto-pan.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/ectophase.html" data-series="evil">
+        <div class="pmedia"><img class="art" src="images/plugins/ectophase/ecto-smoke.jpg" alt="Ectophase display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-evil">EVIL series</span><span>Phaser</span></div>
+          <h3 class="display">Ectophase</h3>
+          <p>A phaser with eight spirits, from a gentle 4-stage wisp to a 24-stage legion.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/doppelghast.html" data-series="evil">
+        <div class="pmedia"><img class="art" src="images/plugins/doppelghast/doppelghast-forest.jpg" alt="Doppelghast display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-evil">EVIL series</span><span>Chorus</span></div>
+          <h3 class="display">Doppelghast</h3>
+          <p>A chorus with eight modes, from a classic stereo chorus to an octave-down shadow choir.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/the-embalmer.html" data-series="evil">
+        <div class="pmedia"><img class="art" src="images/plugins/the-embalmer/embalmer-zap.jpg" alt="The Embalmer display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-evil">EVIL series</span><span>Multiband distortion</span></div>
+          <h3 class="display">The Embalmer</h3>
+          <p>Four-band distortion with five flavours, voiced for guitar, drums, vocals or the master.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/necrosynth.html" data-series="evil">
+        <div class="pmedia"><img class="art" src="images/plugins/necrosynth/skull.jpg" alt="Necrosynth display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-evil">EVIL series</span><span>Synth</span></div>
+          <h3 class="display">Necrosynth</h3>
+          <p>A synth with five sound engines, one-key chords, a rhythm pad and an arpeggiator.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/drum-dog.html" data-series="lab">
+        <div class="pmedia"><div class="tile"><span>Drum Dog</span></div></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-lab">LAB series</span><span>Drum prep</span></div>
+          <h3 class="display">Drum Dog</h3>
+          <p>Everything a multitrack drum kit needs before the mix: level, align and trigger, on every drum track.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/bloodhound.html" data-series="lab">
+        <div class="pmedia"><div class="tile"><span>Bloodhound</span></div></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-lab">LAB series</span><span>Dynamic EQ</span></div>
+          <h3 class="display">Bloodhound</h3>
+          <p>A surgical 64-band dynamic EQ that shows you where your tracks mask each other.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/hush-puppy.html" data-series="lab">
+        <div class="pmedia"><div class="tile"><span>Hush Puppy</span></div></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-lab">LAB series</span><span>Bleed remover</span></div>
+          <h3 class="display">Hush Puppy</h3>
+          <p>A dynamic high shelf that takes cymbal and hi-hat bleed off your drum mics and leaves the hits alone.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/howl-room.html" data-series="howl">
+        <div class="pmedia"><img class="art" src="images/plugins/howl-room/howl-wood.jpg" alt="Howl Room display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-howl">HOWL series</span><span>Room reverb</span></div>
+          <h3 class="display">Howl Room</h3>
+          <p>A clean wooden room reverb with a built-in match EQ. The dog howls louder the more you add.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/howl-plate.html" data-series="howl">
+        <div class="pmedia"><img class="art" src="images/plugins/howl-plate/howl-steel.jpg" alt="Howl Plate display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-howl">HOWL series</span><span>Plate reverb</span></div>
+          <h3 class="display">Howl Plate</h3>
+          <p>A bright, silky steel plate reverb with a built-in match EQ.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/macabreverb.html" data-series="brutal">
+        <div class="pmedia"><img class="art" src="images/plugins/macabreverb/cistern-loud.jpg" alt="Macabreverb display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-brutal">Brutal FX</span><span>Reverb</span></div>
+          <h3 class="display">Macabreverb</h3>
+          <p>Nine reverb spaces with shimmer, freeze, tempo sync and MatchMe on the tail.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/abyssdelay.html" data-series="brutal">
+        <div class="pmedia"><img class="art" src="images/plugins/abyssdelay/sea.jpg" alt="Abyssdelay display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-brutal">Brutal FX</span><span>Delay</span></div>
+          <h3 class="display">Abyssdelay</h3>
+          <p>Seven delay modes, a rhythm pad that writes patterns, prime-number taps and MatchMe on the repeats.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/hate-tape.html" data-series="brutal">
+        <div class="pmedia"><img class="art" src="images/plugins/hate-tape/cassette.jpg" alt="Hate Tape display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-brutal">Brutal FX</span><span>Tape</span></div>
+          <h3 class="display">Hate Tape</h3>
+          <p>Tape and cassette machines, from 2-inch multitrack to VHS, with wear, wow and flutter, and tape stop.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/dubbly-wubbly.html" data-series="brutal">
+        <div class="pmedia"><img class="art" src="images/plugins/dubbly-wubbly/funhouse.jpg" alt="Dubbly Wubbly display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-brutal">Brutal FX</span><span>Doubler</span></div>
+          <h3 class="display">Dubbly Wubbly</h3>
+          <p>Six ways to double a part, with the low end always kept tight in the middle.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/the-surgeon.html" data-series="brutal">
+        <div class="pmedia"><img class="art" src="images/plugins/the-surgeon/surgery.jpg" alt="The Surgeon display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-brutal">Brutal FX</span><span>Resonance suppressor</span></div>
+          <h3 class="display">The Surgeon</h3>
+          <p>Finds and removes harsh resonances as the music changes, plus four EQ bands on the analyser.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/gain-reaper.html" data-series="studio">
+        <div class="pmedia"><img class="art" src="images/plugins/gain-reaper/display.jpg" alt="Gain Reaper display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-studio">Studio</span><span>Compressor</span></div>
+          <h3 class="display">Gain Reaper</h3>
+          <p>Sixteen compressor models on one engine, with side chain, a ducker and HAUNT.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/shell-shock.html" data-series="studio">
+        <div class="pmedia"><img class="art" src="images/plugins/shell-shock/hammer-zap.jpg" alt="Shell Shock display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-studio">Studio</span><span>Drum clipper</span></div>
+          <h3 class="display">Shell Shock</h3>
+          <p>A drum shell clipper for kick, snare and toms, from gentle saturation to hard clipping.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/shellgate.html" data-series="studio">
+        <div class="pmedia"><div class="tile"><span>ShellGate</span></div></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-studio">Studio</span><span>Drum gate</span></div>
+          <h3 class="display">ShellGate</h3>
+          <p>A lookahead bleed gate for close kick, snare and tom mics.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/guard-dog.html" data-series="studio">
+        <div class="pmedia"><div class="tile"><span>Guard Dog</span></div></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-studio">Studio</span><span>Limiter</span></div>
+          <h3 class="display">Guard Dog</h3>
+          <p>A clean true peak limiter. With nothing to limit, the output is bit-identical to the input.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/matchme.html" data-series="studio">
+        <div class="pmedia"><div class="tile"><span>MatchMe</span></div></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-studio">Studio</span><span>Match EQ</span></div>
+          <h3 class="display">MatchMe</h3>
+          <p>Learn a reference and match it, or push away from it, at zero latency.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/the-brutal.html" data-series="amps">
+        <div class="pmedia"><img class="art" src="images/plugins/the-brutal/bg_amp.jpg" alt="The Brutal display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-amps">Amps</span><span>Metal amp</span></div>
+          <h3 class="display">The Brutal</h3>
+          <p>A high-gain metal amp with CLEAN, TIGHT and SLUDGE channels and a full effects rack.</p>
+        </div>
+      </a>
+      <a class="pcard" href="plugins/the-subrutal.html" data-series="amps">
+        <div class="pmedia"><img class="art" src="images/plugins/the-subrutal/bg_amp.jpg" alt="The Subrutal display art"></div>
+        <div class="pbody">
+          <div class="pmeta"><span class="badge s-amps">Amps</span><span>Bass amp</span></div>
+          <h3 class="display">The Subrutal</h3>
+          <p>A bass amp that runs a dirty and a clean path at once, with eight heads and a kick ducker.</p>
+        </div>
+      </a>
     </div>
+    <p class="more">More on the way.</p>
   </div></section>
 
-  <section id="all" style="padding-top: 0"><div class="wrap">
-    <h2 class="display">The whole pack</h2>
-    <p class="sub">Every plugin installs through the Product Manager. More on the way.</p>
-    <h3 class="cat">Amps</h3>
-    <div class="grid">
-      <div class="mini"><b>The Brutal</b><span>High-gain metal amp with CLEAN, TIGHT and SLUDGE channels, octaver, boost, gate, cab IRs and tape.</span></div>
-      <div class="mini"><b>The Subrutal</b><span>Bass amp running a dirty and a clean path at once, with eight heads, sub synth, IRs and a kick ducker.</span></div>
-    </div>
-    <h3 class="cat">Dynamics</h3>
-    <div class="grid">
-      <div class="mini"><b>Gain Reaper</b><span>Sixteen compressor models on one engine, with side chain and a built-in ducker.</span></div>
-      <div class="mini"><b>Guard Dog</b><span>Clean true peak limiter. With nothing to limit, the output is bit-identical to the input.</span></div>
-      <div class="mini"><b>Shell Shock</b><span>Drum shell clipper with ten HEAT modes, from gentle saturation to hard clipping.</span></div>
-      <div class="mini"><b>ShellGate</b><span>Lookahead bleed gate for kick, snare and tom mics, with key filter and bleed reject.</span></div>
-      <div class="mini"><b>Drum Dog</b><span>Drum prep for multitracks: level every hit, phase-align to a master track, and trigger MIDI.</span></div>
-    </div>
-    <h3 class="cat">EQ</h3>
-    <div class="grid">
-      <div class="mini"><b>Bloodhound</b><span>64-band dynamic EQ with mid/side, three phase modes, and masking shown between instances.</span></div>
-      <div class="mini"><b>The Surgeon</b><span>Resonance suppressor that follows the music, plus four EQ bands you drag on the analyser.</span></div>
-      <div class="mini"><b>MatchMe</b><span>Match EQ: learn a reference and match it, or push away from it, at zero latency.</span></div>
-    </div>
-    <h3 class="cat">Modulation</h3>
-    <div class="grid">
-      <div class="mini"><b>Fanger</b><span>Eight flanger modes, from classic jet sweeps to through-zero and an endless spiral.</span></div>
-      <div class="mini"><b>Ectophase</b><span>Phaser from 4 to 24 stages, with endless sweeps and a mode that follows your playing.</span></div>
-      <div class="mini"><b>Death Rattle</b><span>Tremolo with eight characters, from amp shiver and hard chop to harmonic trem and auto-pan.</span></div>
-      <div class="mini"><b>Dubbly Wubbly</b><span>Doubler with six modes, from a tight double to a crowd, with the low end kept centred.</span></div>
-    </div>
-    <h3 class="cat">Space &amp; time</h3>
-    <div class="grid">
-      <div class="mini"><b>Macabreverb</b><span>Nine reverb spaces with shimmer, freeze, tempo sync and MatchMe on the tail.</span></div>
-      <div class="mini"><b>Abyssdelay</b><span>Seven delay modes, a rhythm pad that writes patterns, prime-number taps and freeze.</span></div>
-    </div>
-    <h3 class="cat">Colour</h3>
-    <div class="grid">
-      <div class="mini"><b>Hate Tape</b><span>Tape and cassette machines, from 2" multitrack to VHS, with wear, wow and flutter, and tape stop.</span></div>
-      <div class="mini"><b>The Embalmer</b><span>Four-band distortion with tube, tape, fuzz, fold and bit-crush flavours per band.</span></div>
-    </div>
-    <h3 class="cat">Instruments</h3>
-    <div class="grid">
-      <div class="mini"><b>Necrosynth</b><span>Synth with five sound engines, one-key chords, a rhythm pad, an arpeggiator and built-in effects.</span></div>
+  <section class="about"><div class="wrap">
+    <div class="dog"><img src="images/dog.jpg" alt="RoDog's dog sitting on a wooden floor, looking up"></div>
+    <div>
+      <h2 class="display">Good plugins. Good dog.</h2>
+      <p>Every RoDog plugin is tested on every build: null tests, presets, automation, CPU and more. The head of quality control signs off on the rest.</p>
     </div>
   </div></section>
 
@@ -194,16 +244,17 @@
         <li>Open it and pick the plugins you want, or install them all.</li>
         <li>Restart your DAW. In Logic, look under Audio Units → RoDog.</li>
       </ol>
-      <a class="btn" href="#">Download for Mac</a>
-      <a class="btn" href="#" style="margin-left: 8px">Download for Windows</a>
+      <div class="actions">
+        <a class="btn" href="#">Download for Mac</a>
+        <a class="btn" href="#">Download for Windows</a>
+      </div>
     </div>
-    <div class="logo-big"><img src="images/rodog-logo.png" alt="RoDog"></div>
   </div></section>
 </main>
-
 <footer><div class="wrap">
   <img src="images/rodog-logo.png" alt="RoDog">
   <span>© 2026 RoDog</span>
 </div></footer>
+<script src="site.js"></script>
 </body>
 </html>
