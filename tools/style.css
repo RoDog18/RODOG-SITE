@@ -32,7 +32,7 @@ nav .cart { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12
 .stage { position: fixed; inset: 64px 0 0 0; z-index: 0; pointer-events: none; overflow: hidden;
   background: radial-gradient(ellipse at 40% 45%, #1d1d1d 0%, var(--bg) 60%); }
 .stage-in { position: relative; height: 100%; max-height: 760px; display: flex; align-items: center; }
-.stage .biglogo { position: relative; z-index: 2; width: 66%; margin-left: -2%; margin-top: 12%;
+.stage .biglogo { position: relative; z-index: 2; width: 74%; margin-left: -2%; align-self: flex-start; margin-top: 7%;
   filter: drop-shadow(0 18px 50px rgba(0,0,0,.9)); }
 .stage .herodog { position: absolute; z-index: 1; right: 11%; bottom: 0; height: 96%; max-height: 720px; width: auto; }
 main > section { position: relative; z-index: 1; }
@@ -137,3 +137,4 @@ footer img { height: 32px; width: auto; }
 .overview .vslot.wide { max-width: 760px; margin: 0 auto; }
 .fpic { border-radius: 14px; border: 1px solid var(--line); width: 100%; }
 [hidden] { display: none !important; }
+.hero .wrap { width: 100%; }
