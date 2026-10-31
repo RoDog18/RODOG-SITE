@@ -1,7 +1,7 @@
 # Builds the RoDog site from plugins.py into the site folder given as argv[1].
 import html, os, shutil, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from plugins import PLUGINS, SERIES
+from plugins import PLUGINS, SERIES, EFFECTS
 
 out = sys.argv[1]
 series_name = {k: n for k, n, _ in SERIES}
@@ -65,10 +65,15 @@ def card(p):
 """
 
 def index():
-    tabs = '<button class="tab on" data-tab="all">All</button>' + "".join(
+    tabs = '<button class="tab on" data-tab="all">All Plugins</button>' + "".join(
         f'<button class="tab" data-tab="{k}">{e(n)}</button>' for k, n, _ in SERIES)
     blurbs = "".join(f'<p class="blurb" data-blurb="{k}" hidden>{e(d)}</p>' for k, _, d in SERIES)
-    cards = "".join(card(p) for p in PLUGINS)
+    by_effect = ""
+    for k, n in EFFECTS:
+        group = [p for p in PLUGINS if p["effect"] == k]
+        if group:
+            by_effect += f'    <h3 class="cat">{e(n)}</h3>\n    <div class="pgrid">\n' + "".join(card(p) for p in group) + "    </div>\n"
+    by_series = "".join(card(p) for p in PLUGINS)
     return head("RoDog Plugins", 0, "Audio plugins by RoDog. VST3 and AU for macOS and Windows.") + f"""
 <main>
   <section class="hero">
@@ -76,20 +81,16 @@ def index():
       <h1 class="sr">RoDog</h1>
       <img class="biglogo" src="images/rodog-logo.png" alt="RoDog">
       <p class="lead">Audio plugins for producers. {len(PLUGINS)} plugins and counting, installed with the RoDog Product Manager.</p>
-      <div class="actions">
-        <a class="btn" href="#plugins">See the plugins</a>
-        <a class="btn ghost" href="#download">Get the Product Manager</a>
-      </div>
-      <div class="formats">VST3 &amp; AU · macOS &amp; Windows</div>
     </div>
   </section>
 
   <section id="plugins"><div class="wrap">
-    <h2 class="display">Plugins</h2>
     <div class="tabs" role="tablist">{tabs}</div>
     {blurbs}
-    <div class="pgrid">
-{cards}    </div>
+    <div id="by-effect">
+{by_effect}    </div>
+    <div id="by-series" class="pgrid" hidden>
+{by_series}    </div>
     <p class="more">More on the way.</p>
   </div></section>
 

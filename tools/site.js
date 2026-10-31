@@ -1,9 +1,11 @@
-// Series tabs on the home page: show only the cards of the picked series.
+// Home page tabs: All Plugins shows every plugin grouped by effect, a series tab shows only that series.
 document.querySelectorAll('.tab').forEach(function (tab) {
   tab.addEventListener('click', function () {
     var pick = tab.dataset.tab;
     document.querySelectorAll('.tab').forEach(function (t) { t.classList.toggle('on', t === tab); });
-    document.querySelectorAll('.pcard[data-series]').forEach(function (c) { c.hidden = pick !== 'all' && c.dataset.series !== pick; });
+    document.getElementById('by-effect').hidden = pick !== 'all';
+    document.getElementById('by-series').hidden = pick === 'all';
+    document.querySelectorAll('#by-series .pcard').forEach(function (c) { c.hidden = c.dataset.series !== pick; });
     document.querySelectorAll('.blurb').forEach(function (b) { b.hidden = b.dataset.blurb !== pick; });
     try { history.replaceState(null, '', pick === 'all' ? '#plugins' : '#' + pick); } catch (e) {}
   });
