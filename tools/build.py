@@ -98,7 +98,6 @@ def index():
 {by_effect}    </div>
     <div id="by-series" class="pgrid" hidden>
 {by_series}    </div>
-    <p class="more">More on the way.</p>
   </div></section>
 
   <section id="download" class="manager"><div class="wrap">
