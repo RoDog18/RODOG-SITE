@@ -1,7 +1,7 @@
 # Plugin catalogue for the RoDog site. One entry per plugin.
 # series: evil | lab | howl | brutal | amps | studio
 # art: display images copied from the plugin's repo (Resources/images/...), first one is the card image
-# features: (title, explanation[, video file]) - add a video file name later and it replaces the placeholder
+# features: (title, explanation[, picture file in images/plugins/<slug>/]) - without one a matching screenshot is used
 PLUGINS = [
  dict(slug="fanger", name="Fanger", repo="fanger", series="evil", type="Flanger",
       tag="Eight flavours of flange, from classic jet sweeps to through-zero tape and an endless spiral.",

@@ -5,7 +5,8 @@ The pages are generated. Edit `tools/plugins.py` (the plugin catalogue) or `tool
 `images/plugins/<slug>/` and rebuilds `index.html` and `plugins/*.html`.
 
 - Add a plugin: add an entry to `PLUGINS` in `plugins.py`.
-- Add a feature video: put the file in `videos/<slug>/` and add its name as the third item of that feature,
-  e.g. `("Eight modes", "JET is ...", "modes.mp4")`.
+- Feature pictures: by default each feature shows a screenshot whose file name matches a word in its title.
+  To pick one, add its file name as the third item, e.g. `("Eight modes", "JET is ...", "shot-fanger-swarm.jpg")`.
+- The walkthrough video sits above the Features section (placeholder until a video is added).
 - Screenshots: `tools/shots.sh <repo> ...` builds each plugin's Shot tool (needs JUCE at /home/user/JUCE) and
   writes PNGs to /home/user/shots/<repo>; `assemble.sh` picks them up.

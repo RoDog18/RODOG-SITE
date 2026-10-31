@@ -127,15 +127,16 @@ def plugin_page(p, i):
     feats = ""
     for n, f in enumerate(p["features"]):
         title, text = f[0], f[1]
-        video = f[2] if len(f) > 2 else None
-        if video:
-            m = f'<video controls preload="metadata" src="{up}videos/{p["slug"]}/{video}"></video>'
+        pics = shots or p["art"]
+        pick = f[2] if len(f) > 2 else None
+        if not pick and pics:
+            # a screenshot whose name shares a word with the feature title (e.g. "advanced"), else take them in turn
+            words = [w.lower().strip(",") for w in title.split() if len(w) > 3]
+            pick = next((x for x in pics for w in words if w in x.lower()), pics[n % len(pics)])
+        if pick:
+            m = f'<img class="fpic" src="{up}images/plugins/{p["slug"]}/{pick}" alt="{e(p["name"])}: {e(title)}" loading="lazy">'
         else:
-            pics = shots or p["art"]
-            if pics:
-                m = f'<div class="still"><img src="{up}images/plugins/{p["slug"]}/{pics[n % len(pics)]}" alt="{e(p["name"])}: {e(title)}" loading="lazy"><span class="soon">▶ Video coming soon</span></div>'
-            else:
-                m = f'<div class="vslot"><span class="play">▶</span><span>Video coming soon</span></div>'
+            m = '<div class="vslot"><span>Picture coming soon</span></div>'
         feats += f"""    <div class="feature{' flip' if n % 2 else ''}">
       <div class="ftext"><h3 class="display">{e(title)}</h3><p>{e(text)}</p></div>
       <div class="fmedia">{m}</div>
