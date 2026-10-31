@@ -87,7 +87,7 @@ def index():
   <section class="hero">
     <div class="wrap">
       <h1 class="sr">RoDog</h1>
-      <p class="lead">Audio plugins for producers. {len(PLUGINS)} plugins and counting, installed with the RoDog Product Manager.</p>
+      <p class="lead">Audio plugins for producers, mix engineers, sound designers and guitarists. Install and update them all with the RoDog Product Manager.</p>
     </div>
   </section>
 
