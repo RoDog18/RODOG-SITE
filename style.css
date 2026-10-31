@@ -31,12 +31,12 @@ nav .cart { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12
 /* home page: logo and dog sit in a fixed layer that fades back as the plugins scroll over it */
 .stage { position: fixed; inset: 64px 0 0 0; z-index: 0; pointer-events: none; overflow: hidden;
   background: radial-gradient(ellipse at 40% 45%, #1d1d1d 0%, var(--bg) 60%); }
-.stage-in { position: relative; height: 100%; max-height: 760px; display: flex; align-items: center; }
-.stage .biglogo { position: relative; z-index: 2; width: 82%; margin-left: -7%; align-self: flex-start; margin-top: 5%;
+.stage-in { position: relative; height: 100%; max-width: none; padding: 0 2vw; display: flex; align-items: center; }
+.stage .biglogo { position: relative; z-index: 2; width: min(64vw, 118vh); margin-left: -1vw; align-self: flex-start; margin-top: 6vh;
   filter: drop-shadow(0 18px 50px rgba(0,0,0,.9)); }
-.stage .herodog { position: absolute; z-index: 1; right: 1%; bottom: 0; height: 96%; max-height: 720px; width: auto; }
+.stage .herodog { position: absolute; z-index: 1; right: 3vw; bottom: 0; height: 97%; width: auto; }
 main > section { position: relative; z-index: 1; }
-.hero { min-height: calc(86vh - 64px); max-height: 700px; display: flex; align-items: flex-end; padding: 0 0 28px; }
+.hero { min-height: calc(100vh - 64px); display: flex; align-items: flex-end; padding: 0 0 28px; }
 .hero .lead { color: var(--ink); font-size: clamp(16px, 2vw, 19px); max-width: 520px; margin: 0; text-shadow: 0 2px 12px #000; }
 #plugins .tabs { position: relative; }
 .pcard { background: rgba(17,17,17,.96); }
@@ -119,8 +119,8 @@ footer img { height: 32px; width: auto; }
 
 @media (max-width: 1100px) { .pgrid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 820px) {
-  .stage-in { max-height: 520px; }
-  .stage .biglogo { width: 62%; margin: 0; }
+  .stage-in { max-height: 520px; padding: 0 16px; }
+  .stage .biglogo { width: 62%; margin: 0; align-self: center; }
   .stage .herodog { height: auto; width: 40%; max-height: none; right: 0; bottom: auto; top: 50%; transform: translateY(-50%); }
   .hero { min-height: 470px; }
   .about .wrap, .phero .wrap, .feature { grid-template-columns: 1fr; gap: 24px; }
