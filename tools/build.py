@@ -76,10 +76,15 @@ def index():
     by_series = "".join(card(p) for p in PLUGINS)
     return head("RoDog Plugins", 0, "Audio plugins by RoDog. VST3 and AU for macOS and Windows.") + f"""
 <main>
+  <div class="stage" aria-hidden="true">
+    <div class="stage-in wrap">
+      <img class="biglogo" src="images/rodog-logo.png" alt="">
+      <img class="herodog" src="images/dog-cutout.png" alt="">
+    </div>
+  </div>
   <section class="hero">
     <div class="wrap">
       <h1 class="sr">RoDog</h1>
-      <img class="biglogo" src="images/rodog-logo.png" alt="RoDog">
       <p class="lead">Audio plugins for producers. {len(PLUGINS)} plugins and counting, installed with the RoDog Product Manager.</p>
     </div>
   </section>

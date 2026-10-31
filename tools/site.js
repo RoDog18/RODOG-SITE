@@ -13,3 +13,14 @@ document.querySelectorAll('.tab').forEach(function (tab) {
 var start = location.hash.slice(1);
 var startTab = document.querySelector('.tab[data-tab="' + start + '"]');
 if (startTab) startTab.click();
+
+// Fade the logo and dog back as the page scrolls, so the plugins pass over them.
+var stage = document.querySelector('.stage');
+if (stage) {
+  var fade = function () {
+    var t = Math.min(window.scrollY / (window.innerHeight * 0.6), 1);
+    stage.style.opacity = String(1 - t * 0.85);
+  };
+  window.addEventListener('scroll', fade, { passive: true });
+  fade();
+}
