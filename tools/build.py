@@ -1,10 +1,12 @@
 # Builds the RoDog site from plugins.py into the site folder given as argv[1].
-import html, os, shutil, sys
+import hashlib, html, os, shutil, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from plugins import PLUGINS, SERIES, EFFECTS
 
 out = sys.argv[1]
 series_name = {k: n for k, n, _ in SERIES}
+# a version tag on style.css / site.js so browsers fetch the new files after every change
+ver = hashlib.md5(b"".join(open(os.path.join(os.path.dirname(__file__), f), "rb").read() for f in ("style.css", "site.js"))).hexdigest()[:8]
 e = html.escape
 
 def head(title, depth, desc):
@@ -19,7 +21,7 @@ def head(title, depth, desc):
 <link rel="icon" href="{up}images/rodog-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{up}style.css">
+<link rel="stylesheet" href="{up}style.css?v={ver}">
 </head>
 <body>
 <header class="top"><div class="wrap"><nav>
@@ -38,7 +40,7 @@ def foot(depth):
   <img src="{up}images/rodog-logo.png" alt="RoDog">
   <span>© 2026 RoDog</span>
 </div></footer>
-<script src="{up}site.js"></script>
+<script src="{up}site.js?v={ver}"></script>
 </body>
 </html>
 """
