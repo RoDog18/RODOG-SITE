@@ -199,7 +199,7 @@ PLUGINS = [
       ]),
  dict(slug="the-brutal", name="The Brutal", repo="the-brutal", series="amps", effect="amps", type="Metal amp",
       tag="A high-gain metal amp with CLEAN, TIGHT and SLUDGE channels and a full effects rack.",
-      art=["bg_amp.jpg"],
+      art=[],
       features=[
        ("Three channels", "CLEAN, TIGHT and SLUDGE. The whole interface takes the channel's colour."),
        ("Full signal chain", "Octaver, boost, gate, power amp, cab and dual IR, palm-mute tightener, harshness suppressor, doubler, delay, reverb and tape."),
@@ -208,7 +208,7 @@ PLUGINS = [
       ]),
  dict(slug="the-subrutal", name="The Subrutal", repo="the-subrutal", series="amps", effect="amps", type="Bass amp",
       tag="A bass amp that runs a dirty and a clean path at once, with eight heads and a kick ducker.",
-      art=["bg_amp.jpg"],
+      art=[],
       features=[
        ("Two paths", "A DIRTY path and a CLEAN path run at once, and the CLEAN to DIRTY slider blends them."),
        ("Eight dirty heads", "TOMB VT, B-7 GRAVE, OMEGA ROT, ROT ORANGE, PORTA-COFFIN, SUB-WAKE, DEAD SUNN T and SUBRUTAL."),
