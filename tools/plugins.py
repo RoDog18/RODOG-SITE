@@ -146,7 +146,7 @@ PLUGINS = [
       ]),
  dict(slug="the-surgeon", name="The Surgeon", repo="acute-eq", series="brutal", type="Resonance suppressor",
       tag="Finds and removes harsh resonances as the music changes, plus four EQ bands on the analyser.",
-      art=["surgery.jpg"],
+      art=[],
       features=[
        ("Follows the music", "Every resonance it finds gets its own cut, and the cuts move with the music. No fixed number of bands."),
        ("Detect", "Side chain mode to make room for a vocal, stereo, linked, mid or side, transient protection and lookahead."),

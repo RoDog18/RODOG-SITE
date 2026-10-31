@@ -49,7 +49,7 @@ def media(p, depth, extra=""):
     shots = p.get("shots", [])
     if shots:
         return f'<img class="shot{extra}" src="{up}images/plugins/{p["slug"]}/{shots[0]}" alt="{e(p["name"])} plugin">'
-    if p["art"]:
+    if p["art"] and depth:
         return f'<img class="art{extra}" src="{up}images/plugins/{p["slug"]}/{p["art"][0]}" alt="{e(p["name"])} display art">'
     return f'<div class="tile{extra}"><span>{e(p["name"])}</span></div>'
 
