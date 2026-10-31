@@ -101,14 +101,6 @@ def index():
     <p class="more">More on the way.</p>
   </div></section>
 
-  <section class="about"><div class="wrap">
-    <div class="dog"><img src="images/dog.jpg" alt="RoDog's dog sitting on a wooden floor, looking up"></div>
-    <div>
-      <h2 class="display">Good plugins. Good dog.</h2>
-      <p>Every RoDog plugin is tested on every build: null tests, presets, automation, CPU and more. The head of quality control signs off on the rest.</p>
-    </div>
-  </div></section>
-
   <section id="download" class="manager"><div class="wrap">
     <div>
       <h2 class="display">RoDog Product Manager</h2>
