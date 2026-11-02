@@ -125,7 +125,8 @@ STANDING = ["dog-37091.png", "dog-37053.png", "dog-37066.png", "dog-37063.png", 
 LEGAL_DOGS = {"support": "dog-37091.png", "privacy": "dog-37078.png", "licence": "dog-37061.png", "refunds": "dog-37075.png"}
 
 def backdog(src, depth, cls="backdog"):
-    return f'<img class="{cls}" src="{"../" * depth}images/dogs/{src}" alt="" aria-hidden="true">\n'
+    wall = '<div class="woodstage" aria-hidden="true"></div>\n' if cls == "sidestage" else ""
+    return wall + f'<img class="{cls}" src="{"../" * depth}images/dogs/{src}" alt="" aria-hidden="true">\n'
 
 def plugin_page(p, i):
     up = "../"
