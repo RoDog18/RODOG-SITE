@@ -138,3 +138,14 @@ footer img { height: 32px; width: auto; }
 .fpic { border-radius: 14px; border: 1px solid var(--line); width: 100%; }
 [hidden] { display: none !important; }
 .hero .wrap { width: 100%; }
+
+/* footer links and policy pages */
+footer .flinks { display: flex; flex-wrap: wrap; gap: 6px 18px; list-style: none; margin: 0; padding: 0; }
+footer .flinks a { color: var(--muted); text-decoration: none; font-size: 14px; }
+footer .flinks a:hover { color: var(--ink); }
+.legal .wrap { max-width: 760px; padding-top: 40px; padding-bottom: 72px; }
+.legal h1 { margin: 12px 0 20px; }
+.legal h2 { font-size: 20px; margin: 32px 0 8px; }
+.legal p, .legal li { color: var(--muted); }
+.legal strong { color: var(--ink); }
+.legal a { color: var(--accent); }

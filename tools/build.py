@@ -2,6 +2,7 @@
 import hashlib, html, os, shutil, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from plugins import PLUGINS, SERIES, EFFECTS
+from legal import PAGES as LEGAL
 
 out = sys.argv[1]
 series_name = {k: n for k, n, _ in SERIES}
@@ -37,8 +38,9 @@ def head(title, depth, desc):
 def foot(depth):
     up = "../" * depth
     return f"""<footer><div class="wrap">
-  <img src="{up}images/rodog-logo.png" alt="RoDog">
-  <span>© 2026 RoDog</span>
+  <img src="{up}images/rodog-logo.png" alt="RoDog Audio">
+  <ul class="flinks">""" + "".join(f'<li><a href="{up}{lp["slug"]}.html">{lp["nav"]}</a></li>' for lp in LEGAL) + f"""</ul>
+  <span>© 2026 RoDog Audio</span>
 </div></footer>
 <script src="{up}site.js?v={ver}"></script>
 </body>
@@ -198,4 +200,15 @@ os.makedirs(os.path.join(out, "plugins"), exist_ok=True)
 open(os.path.join(out, "index.html"), "w").write(index())
 for i, p in enumerate(PLUGINS):
     open(os.path.join(out, "plugins", p["slug"] + ".html"), "w").write(plugin_page(p, i))
-print("built", len(PLUGINS), "plugin pages")
+def legal_page(lp):
+    return head(f"{lp['title']} | RoDog Audio", 0, f"RoDog Audio {lp['title'].lower()}.") + f"""
+<main class="legal"><div class="wrap">
+  <a class="back" href="index.html">← Home</a>
+  <h1 class="display">{e(lp['title'])}</h1>
+{lp['body']}
+</div></main>
+""" + foot(0)
+
+for lp in LEGAL:
+    open(os.path.join(out, lp["slug"] + ".html"), "w").write(legal_page(lp))
+print("built", len(PLUGINS), "plugin pages and", len(LEGAL), "policy pages")
