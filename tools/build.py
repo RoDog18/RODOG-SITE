@@ -89,7 +89,7 @@ def index():
   <section class="hero">
     <div class="wrap">
       <h1 class="sitename display">The Dog House</h1>
-      <p class="lead">The home of RoDog Audio plugins, for producers, mix engineers, sound designers and guitarists. Install and update them all with The Kennel.</p>
+      <p class="lead">The home of RoDog Audio plugins, for producers, mix engineers, sound designers and musicians. Install and update them all with The Kennel.</p>
     </div>
   </section>
 
@@ -120,6 +120,13 @@ def index():
 </main>
 """ + foot(0)
 
+# cut-out dog photos (images/dogs) for the inner pages, taken in turn so neighbouring pages differ
+STANDING = ["dog-37091.png", "dog-37053.png", "dog-37066.png", "dog-37063.png", "dog-37070.png", "dog-37052.png", "dog-37061.png"]
+LEGAL_DOGS = {"support": "dog-37091.png", "privacy": "dog-37078.png", "licence": "dog-37061.png", "refunds": "dog-37075.png"}
+
+def backdog(src, depth, cls="backdog"):
+    return f'<img class="{cls}" src="{"../" * depth}images/dogs/{src}" alt="" aria-hidden="true">\n'
+
 def plugin_page(p, i):
     up = "../"
     shots = p.get("shots", [])
@@ -147,7 +154,7 @@ def plugin_page(p, i):
     same = [q for q in PLUGINS if q["series"] == p["series"] and q is not p][:3]
     related = "".join(card(q).replace('href="plugins/', 'href="').replace('src="images/', 'src="../images/') for q in same)
     return head(f"{p['name']} | The Dog House by RoDog Audio", 1, p["tag"]) + f"""
-<main class="product">
+""" + backdog(STANDING[i % len(STANDING)], 1) + f"""<main class="product">
   <section class="phero"><div class="wrap">
     <div class="pmain">{media(p, 1, " big")}</div>
     <div class="pinfo">
@@ -202,7 +209,7 @@ for i, p in enumerate(PLUGINS):
     open(os.path.join(out, "plugins", p["slug"] + ".html"), "w").write(plugin_page(p, i))
 def legal_page(lp):
     return head(f"{lp['title']} | The Dog House by RoDog Audio", 0, f"RoDog Audio {lp['title'].lower()}.") + f"""
-<main class="legal"><div class="wrap">
+""" + backdog(LEGAL_DOGS.get(lp["slug"], "dog-37091.png"), 0, "sidedog") + f"""<main class="legal"><div class="wrap">
   <a class="back" href="index.html">← Home</a>
   <h1 class="display">{e(lp['title'])}</h1>
 {lp['body']}
