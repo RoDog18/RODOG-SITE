@@ -1,6 +1,6 @@
 # Legal and support pages for the RoDog Audio site. build.py turns each entry into <slug>.html at the site root.
 # Body text is plain HTML. CONTACT is the one place the support address lives.
-CONTACT = "support@rodogaudio.com"  # TODO: replace with the real support address before going live
+CONTACT = "rodogaudio@protonaudio.com"
 UPDATED = "2 November 2026"
 
 PAGES = [
