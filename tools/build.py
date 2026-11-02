@@ -26,7 +26,7 @@ def head(title, depth, desc):
 </head>
 <body>
 <header class="top"><div class="wrap"><nav>
-  <a class="logo" href="{up}index.html"><img src="{up}images/rodog-logo.png" alt="RoDog"></a>
+  <a class="logo" href="{up}index.html"><img src="{up}images/rodog-logo.png" alt="The Dog House by RoDog Audio"></a>
   <ul>
     <li><a href="{up}index.html#plugins">Plugins</a></li>
     <li><a href="{up}index.html#download">Download</a></li>
@@ -40,7 +40,7 @@ def foot(depth):
     return f"""<footer><div class="wrap">
   <img src="{up}images/rodog-logo.png" alt="RoDog Audio">
   <ul class="flinks">""" + "".join(f'<li><a href="{up}{lp["slug"]}.html">{lp["nav"]}</a></li>' for lp in LEGAL) + f"""</ul>
-  <span>© 2026 RoDog Audio</span>
+  <span>The Dog House · © 2026 RoDog Audio</span>
 </div></footer>
 <script src="{up}site.js?v={ver}"></script>
 </body>
@@ -78,7 +78,7 @@ def index():
         if group:
             by_effect += f'    <h3 class="cat">{e(n)}</h3>\n    <div class="pgrid">\n' + "".join(card(p) for p in group) + "    </div>\n"
     by_series = "".join(card(p) for p in PLUGINS)
-    return head("RoDog Plugins", 0, "Audio plugins by RoDog. VST3 and AU for macOS and Windows.") + f"""
+    return head("The Dog House | RoDog Audio plugins", 0, "The Dog House: audio plugins by RoDog Audio. VST3 and AU for macOS and Windows.") + f"""
 <main>
   <div class="stage" aria-hidden="true">
     <div class="stage-in wrap">
@@ -88,8 +88,8 @@ def index():
   </div>
   <section class="hero">
     <div class="wrap">
-      <h1 class="sr">RoDog</h1>
-      <p class="lead">Audio plugins for producers, mix engineers, sound designers and guitarists. Install and update them all with the RoDog Product Manager.</p>
+      <h1 class="sitename display">The Dog House</h1>
+      <p class="lead">The home of RoDog Audio plugins, for producers, mix engineers, sound designers and guitarists. Install and update them all with the RoDog Product Manager.</p>
     </div>
   </section>
 
@@ -146,7 +146,7 @@ def plugin_page(p, i):
     prev_p, next_p = PLUGINS[i - 1], PLUGINS[(i + 1) % len(PLUGINS)]
     same = [q for q in PLUGINS if q["series"] == p["series"] and q is not p][:3]
     related = "".join(card(q).replace('href="plugins/', 'href="').replace('src="images/', 'src="../images/') for q in same)
-    return head(f"{p['name']} by RoDog", 1, p["tag"]) + f"""
+    return head(f"{p['name']} | The Dog House by RoDog Audio", 1, p["tag"]) + f"""
 <main class="product">
   <section class="phero"><div class="wrap">
     <div class="pmain">{media(p, 1, " big")}</div>
@@ -201,7 +201,7 @@ open(os.path.join(out, "index.html"), "w").write(index())
 for i, p in enumerate(PLUGINS):
     open(os.path.join(out, "plugins", p["slug"] + ".html"), "w").write(plugin_page(p, i))
 def legal_page(lp):
-    return head(f"{lp['title']} | RoDog Audio", 0, f"RoDog Audio {lp['title'].lower()}.") + f"""
+    return head(f"{lp['title']} | The Dog House by RoDog Audio", 0, f"RoDog Audio {lp['title'].lower()}.") + f"""
 <main class="legal"><div class="wrap">
   <a class="back" href="index.html">← Home</a>
   <h1 class="display">{e(lp['title'])}</h1>
