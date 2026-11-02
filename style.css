@@ -154,10 +154,15 @@ footer .flinks a:hover { color: var(--ink); }
 
 /* inner pages: a cut-out of the dog sits faded in the background, like the home page after scrolling */
 .backdog { position: fixed; z-index: 0; right: 2vw; bottom: 0; height: 82vh; width: auto; max-width: 46vw; object-fit: contain;
-  object-position: bottom right; opacity: .13; pointer-events: none; }
+  object-position: bottom right; opacity: .22; pointer-events: none; }
 .product, .legal { position: relative; z-index: 1; }
 .sidedog { position: fixed; z-index: 0; right: 3vw; bottom: 0; height: 70vh; width: auto; max-width: calc((100vw - 760px) / 2 - 4vw); object-fit: contain;
   object-position: bottom right; opacity: .9; pointer-events: none; }
-@media (max-width: 1180px) { .sidedog { opacity: .14; } }
-@media (max-width: 820px) { .backdog, .sidedog { height: 52vh; max-width: 70vw; opacity: .1; } }
+@media (max-width: 1180px) { .sidedog { opacity: .2; } }
+@media (max-width: 820px) { .backdog, .sidedog { height: 52vh; max-width: 70vw; opacity: .16; } }
 footer { position: relative; z-index: 2; background: var(--bg); }
+
+.overview .wrap { position: relative; }
+.vdog { position: absolute; right: 0; bottom: 0; height: 100%; max-height: 430px; width: auto; max-width: calc((100% - 760px) / 2 + 40px);
+  object-fit: contain; object-position: bottom right; pointer-events: none; filter: drop-shadow(0 6px 18px #000); }
+@media (max-width: 1100px) { .vdog { position: static; display: block; margin: 18px auto 0; height: 260px; max-width: 80%; } }

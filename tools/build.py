@@ -172,6 +172,7 @@ def plugin_page(p, i):
 
   <section class="overview"><div class="wrap">
     <div class="vslot wide"><span class="play">▶</span><span>{e(p['name'])} walkthrough video coming soon</span></div>
+    <img class="vdog" src="{up}images/dogs/{STANDING[(i + 3) % len(STANDING)]}" alt="" aria-hidden="true">
   </div></section>
 
   <section class="features"><div class="wrap">
