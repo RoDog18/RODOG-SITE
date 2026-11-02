@@ -154,7 +154,7 @@ def plugin_page(p, i):
     same = [q for q in PLUGINS if q["series"] == p["series"] and q is not p][:3]
     related = "".join(card(q).replace('href="plugins/', 'href="').replace('src="images/', 'src="../images/') for q in same)
     return head(f"{p['name']} | The Dog House by RoDog Audio", 1, p["tag"]) + f"""
-""" + backdog(STANDING[i % len(STANDING)], 1) + f"""<main class="product">
+""" + backdog(STANDING[i % len(STANDING)], 1, "sidestage") + f"""<main class="product">
   <section class="phero"><div class="wrap">
     <div class="pmain">{media(p, 1, " big")}</div>
     <div class="pinfo">
@@ -172,7 +172,6 @@ def plugin_page(p, i):
 
   <section class="overview"><div class="wrap">
     <div class="vslot wide"><span class="play">▶</span><span>{e(p['name'])} walkthrough video coming soon</span></div>
-    <img class="vdog" src="{up}images/dogs/{STANDING[(i + 3) % len(STANDING)]}" alt="" aria-hidden="true">
   </div></section>
 
   <section class="features"><div class="wrap">
@@ -210,7 +209,7 @@ for i, p in enumerate(PLUGINS):
     open(os.path.join(out, "plugins", p["slug"] + ".html"), "w").write(plugin_page(p, i))
 def legal_page(lp):
     return head(f"{lp['title']} | The Dog House by RoDog Audio", 0, f"RoDog Audio {lp['title'].lower()}.") + f"""
-""" + backdog(LEGAL_DOGS.get(lp["slug"], "dog-37091.png"), 0, "sidedog") + f"""<main class="legal"><div class="wrap">
+""" + backdog(LEGAL_DOGS.get(lp["slug"], "dog-37091.png"), 0, "sidestage") + f"""<main class="legal"><div class="wrap">
   <a class="back" href="index.html">← Home</a>
   <h1 class="display">{e(lp['title'])}</h1>
 {lp['body']}

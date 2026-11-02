@@ -24,3 +24,16 @@ if (stage) {
   window.addEventListener('scroll', fade, { passive: true });
   fade();
 }
+
+// Plugin and policy pages: the dog on the left fades back the same way.
+var side = document.querySelector('.sidestage');
+if (side) {
+  var sideFade = function () {
+    var top = window.matchMedia('(max-width: 1100px)').matches ? 0.3 : 1;
+    var t = Math.min(window.scrollY / (window.innerHeight * 0.6), 1);
+    side.style.opacity = String(top - t * (top - 0.15));
+  };
+  window.addEventListener('scroll', sideFade, { passive: true });
+  window.addEventListener('resize', sideFade);
+  sideFade();
+}
