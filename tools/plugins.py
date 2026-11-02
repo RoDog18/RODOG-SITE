@@ -1,5 +1,5 @@
 # Plugin catalogue for the RoDog site. One entry per plugin.
-# series: evil | lab | howl | amps | studio
+# series: evil | doghouse | howl | amps | studio
 # effect: which group it sits in on the All Plugins tab (see EFFECTS)
 # art: display images copied from the plugin's repo (Resources/images/...), first one is the card image
 # features: (title, explanation[, picture file in images/plugins/<slug>/]) - without one a matching screenshot is used
@@ -60,7 +60,7 @@ PLUGINS = [
        ("Arpeggiator", "ARP plays held notes in the same rhythm: UP, DOWN, RANDOM or CURSED."),
        ("Effects built in", "SCREAM, WHISPERS, CURSE, SUMMON, DESCEND, a reverb, Abyssdelay's delay and Hate Tape."),
       ]),
- dict(slug="drum-dog", name="Drum Dog", repo="drum-dog", series="lab", effect="drums", type="Drum prep",
+ dict(slug="drum-dog", name="Drum Dog", repo="drum-dog", series="doghouse", effect="drums", type="Drum prep",
       tag="Everything a multitrack drum kit needs before the mix: level, align and trigger, on every drum track.",
       art=[],
       features=[
@@ -69,7 +69,7 @@ PLUGINS = [
        ("TRIGGER", "Turns hits into MIDI. Drag the notes onto a MIDI track, or send them live as the track plays. FETCH ignores bleed from the other drums."),
        ("The pack", "Every Drum Dog in the session knows about the others. CAPTURE arms them all at once, and in ARA hosts (Logic, REAPER, Cubase, Studio One, Pro Tools) it reads the clips without playing."),
       ]),
- dict(slug="bloodhound", name="Bloodhound", repo="bloodhound", series="lab", effect="eq", type="Dynamic EQ",
+ dict(slug="bloodhound", name="Bloodhound", repo="bloodhound", series="doghouse", effect="eq", type="Dynamic EQ",
       tag="A surgical 64-band dynamic EQ that shows you where your tracks mask each other.",
       art=[],
       features=[
@@ -79,7 +79,7 @@ PLUGINS = [
        ("Masking and FETCH", "Every Bloodhound shows which other tracks mask it and where. FETCH adds the cuts for you, live or as a snapshot, with priorities so the right track gives way."),
        ("Auto gain", "Keeps the level the same as you EQ, so you hear the change, not the volume."),
       ]),
- dict(slug="hush-puppy", name="Hush Puppy", repo="hush-puppy", series="lab", effect="drums", type="Bleed remover",
+ dict(slug="hush-puppy", name="Hush Puppy", repo="hush-puppy", series="doghouse", effect="drums", type="Bleed remover",
       tag="A dynamic high shelf that takes cymbal and hi-hat bleed off your drum mics and leaves the hits alone.",
       art=[],
       features=[
@@ -145,7 +145,7 @@ PLUGINS = [
        ("Low end stays mono", "Nothing below the split is doubled, so bass and kick stay solid."),
        ("Advanced modules", "Octave ghosts, tone, Haas offset, ducking, spin, drift and a mono check with a correlation meter."),
       ]),
- dict(slug="the-surgeon", name="The Surgeon", repo="acute-eq", series="evil", effect="eq", type="Resonance suppressor",
+ dict(slug="the-surgeon", name="The Surgeon", repo="acute-eq", series="doghouse", effect="eq", type="Resonance suppressor",
       tag="Finds and removes harsh resonances as the music changes, plus four EQ bands on the analyser.",
       art=[],
       features=[
@@ -170,7 +170,7 @@ PLUGINS = [
        ("Harmonic bars", "See and shape the harmonics from H2 to H9."),
        ("Punch and body", "PUNCH and BODY shaping, plus an optional dual-band split."),
       ]),
- dict(slug="shellgate", name="ShellGate", repo="shellgate", series="studio", effect="drums", type="Drum gate",
+ dict(slug="shellgate", name="ShellGate", repo="shellgate", series="doghouse", effect="drums", type="Drum gate",
       tag="A lookahead bleed gate for close kick, snare and tom mics.",
       art=[],
       features=[
@@ -179,7 +179,7 @@ PLUGINS = [
        ("Bleed reject", "Route the snare mic to the side chain and its hits are ignored by the kick gate."),
        ("Listen", "Hear the output, the key, or exactly what's removed."),
       ]),
- dict(slug="guard-dog", name="Guard Dog", repo="gaurd-dog", series="studio", effect="dyn", type="Limiter",
+ dict(slug="guard-dog", name="Guard Dog", repo="gaurd-dog", series="doghouse", effect="dyn", type="Limiter",
       tag="A clean true peak limiter. With nothing to limit, the output is bit-identical to the input.",
       art=[],
       features=[
@@ -188,7 +188,7 @@ PLUGINS = [
        ("True peak quality", "4x, 8x or 16x true peak detection, linked or dual stereo."),
        ("Transparent", "Nothing filters, oversamples or shapes the audio. It's only delayed and turned down."),
       ]),
- dict(slug="matchme", name="MatchMe", repo="matchme", series="studio", effect="eq", type="Match EQ",
+ dict(slug="matchme", name="MatchMe", repo="matchme", series="doghouse", effect="eq", type="Match EQ",
       tag="Learn a reference and match it, or push away from it, at zero latency.",
       art=[],
       features=[
@@ -219,9 +219,9 @@ PLUGINS = [
 
 SERIES = [
  ("evil", "EVIL series", "Dark, animated effects with a twisted streak."),
- ("lab", "LAB series", "Clean, surgical tools for mixing and drum prep."),
+ ("doghouse", "Dog House series", "Clean, surgical tools for mixing, mastering and drum prep."),
  ("howl", "HOWL series", "Clean and goofy reverbs, one space per plugin, with the howling dog."),
- ("studio", "Studio", "Everyday mixing tools: dynamics, gates and matching."),
+ ("studio", "Studio", "Everyday mixing tools: compression and drum clipping."),
  ("amps", "Amps", "Guitar and bass amps with full effects racks."),
 ]
 
