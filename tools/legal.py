@@ -6,7 +6,7 @@ UPDATED = "2 November 2026"
 PAGES = [
  dict(slug="licence", title="Licence agreement", nav="Licence", body=f"""
 <p>This licence agreement is between you and RoDog Audio, an Australian business (the "Seller"). It applies to every
-RoDog Audio plug-in, the RoDog Product Manager and anything else we let you download (the "Software"). By installing
+RoDog Audio plug-in, The Kennel (our plug-in manager) and anything else we let you download (the "Software"). By installing
 or using the Software you agree to it.</p>
 
 <h2>What you can do</h2>
@@ -68,7 +68,7 @@ processor, never to us. Lemon Squeezy shares your name, email, country, what you
 so we can support you. Lemon Squeezy's own privacy policy explains how they handle your data.</p>
 
 <h2>When you use our software</h2>
-<p>When the RoDog Product Manager installs or updates plug-ins, or a plug-in checks its licence, your computer sends
+<p>When The Kennel installs or updates plug-ins, or a plug-in checks its licence, your computer sends
 your licence key and a computer identifier so we can confirm the licence and count activations. We don't collect your
 audio, your projects or what you do in your music software.</p>
 

@@ -89,7 +89,7 @@ def index():
   <section class="hero">
     <div class="wrap">
       <h1 class="sitename display">The Dog House</h1>
-      <p class="lead">The home of RoDog Audio plugins, for producers, mix engineers, sound designers and guitarists. Install and update them all with the RoDog Product Manager.</p>
+      <p class="lead">The home of RoDog Audio plugins, for producers, mix engineers, sound designers and guitarists. Install and update them all with The Kennel.</p>
     </div>
   </section>
 
@@ -104,10 +104,10 @@ def index():
 
   <section id="download" class="manager"><div class="wrap">
     <div>
-      <h2 class="display">RoDog Product Manager</h2>
+      <h2 class="display">The Kennel</h2>
       <p class="sub">One app to install, update and remove every RoDog plugin.</p>
       <ol>
-        <li>Download the Product Manager for your computer.</li>
+        <li>Download The Kennel for your computer.</li>
         <li>Open it and pick the plugins you want, or install them all.</li>
         <li>Restart your DAW. In Logic, look under Audio Units → RoDog.</li>
       </ol>
@@ -159,7 +159,7 @@ def plugin_page(p, i):
         <div class="price">Price coming soon</div>
         <button class="btn" disabled>Add to cart</button>
       </div>
-      <p class="note">Installs through the <a href="{up}index.html#download">RoDog Product Manager</a>. VST3 &amp; AU, macOS &amp; Windows.</p>
+      <p class="note">Installs through the <a href="{up}index.html#download">The Kennel</a>. VST3 &amp; AU, macOS &amp; Windows.</p>
     </div>
   </div></section>
 
