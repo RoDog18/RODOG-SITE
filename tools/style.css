@@ -178,3 +178,13 @@ footer { background: linear-gradient(rgba(5,5,5,.8), rgba(5,5,5,.88)), url(image
 .buy { background: linear-gradient(rgba(10,8,6,.8), rgba(10,8,6,.86)), url(images/wood/deck.jpg) center / cover; border-color: #4a2f1a; }
 .features h2, .gallery h2, .related h2 { border-bottom: 0; }
 .feature { border-top-color: #33210f; }
+
+/* Puppy photos */
+.peekpup { display: block; position: relative; z-index: 1; margin: 24px 6vw -3px auto; height: 230px; width: auto; max-width: 70vw;
+  object-fit: contain; object-position: bottom; pointer-events: none; }
+.manager .wrap { position: relative; }
+.sleeppup { position: absolute; right: 4%; top: 0; transform: translateY(-86%); width: min(440px, 46vw); height: auto; pointer-events: none; }
+.kennelpups { position: absolute; right: 16px; bottom: 0; height: 92%; width: auto; max-width: 36%; object-fit: contain;
+  object-position: bottom right; pointer-events: none; }
+.manager { position: relative; overflow: visible; }
+@media (max-width: 820px) { .peekpup { height: 160px; } .sleeppup { right: auto; left: 2%; width: 52vw; } .kennelpups { position: static; display: block; height: 240px; max-width: 100%; margin: 40px auto -24px; } }

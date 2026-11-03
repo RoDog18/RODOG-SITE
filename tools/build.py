@@ -103,6 +103,8 @@ def index():
   </div></section>
 
   <section id="download" class="manager"><div class="wrap">
+    <img class="sleeppup" src="images/dogs/pup-20210214_104640.png" alt="" aria-hidden="true">
+    <img class="kennelpups" src="images/dogs/pup-20210218_090834.png" alt="" aria-hidden="true">
     <div>
       <h2 class="display">The Kennel</h2>
       <p class="sub">One app to install, update and remove every RoDog plugin.</p>
@@ -117,11 +119,20 @@ def index():
       </div>
     </div>
   </div></section>
-</main>
+""" + peek("pup-20210210_181158.png", 0) + """</main>
 """ + foot(0)
 
 # cut-out dog photos (images/dogs) for the inner pages, taken in turn so neighbouring pages differ
 STANDING = ["dog-37091.png", "dog-37053.png", "dog-37066.png", "dog-37063.png", "dog-37070.png", "dog-37052.png", "dog-37061.png"]
+# Puppy photos: one peeks up over the footer on every page.
+PUPS = ["pup-20210210_181146.png", "pup-20210212_121112.png", "pup-20210210_181159.png", "pup-20210212_121116.png",
+        "pup-20210210_181221.png", "pup-20210212_121136.png", "pup-20210212_121119.png", "pup-20210210_181149.png",
+        "pup-20210212_121124.png", "pup-20210219_161330.png", "pup-20210210_181223.png", "pup-20210212_121126.png",
+        "pup-20210214_104746.png", "pup-20210214_104607.png"]
+STANDING[2:2] = ["pup-20210214_104607.png"]
+STANDING[5:5] = ["pup-20210214_104746.png"]
+def peek(src, depth):
+    return f'  <img class="peekpup" src="{"../" * depth}images/dogs/{src}" alt="" aria-hidden="true">\n'
 LEGAL_DOGS = {"support": "dog-37091.png", "privacy": "dog-37078.png", "licence": "dog-37061.png", "refunds": "dog-37075.png"}
 
 def backdog(src, depth, cls="backdog"):
@@ -194,7 +205,7 @@ def plugin_page(p, i):
     <a href="{prev_p['slug']}.html">← {e(prev_p['name'])}</a>
     <a href="{next_p['slug']}.html">{e(next_p['name'])} →</a>
   </nav>
-</main>
+""" + peek(PUPS[i % len(PUPS)], 1) + """</main>
 """ + foot(1)
 
 # screenshots copied in by assemble.sh are named shot-*.png; main view first
@@ -214,7 +225,8 @@ def legal_page(lp):
   <a class="back" href="index.html">← Home</a>
   <h1 class="display">{e(lp['title'])}</h1>
 {lp['body']}
-</div></main>
+</div>
+""" + peek(PUPS[(LEGAL.index(lp) + 5) % len(PUPS)], 0) + """</main>
 """ + foot(0)
 
 for lp in LEGAL:
