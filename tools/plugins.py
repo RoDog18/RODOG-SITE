@@ -1,5 +1,5 @@
 # Plugin catalogue for the RoDog site. One entry per plugin.
-# series: evil | doghouse | howl | amps | studio
+# series: evil | doghouse | drumdog | howl | amps | studio
 # effect: which group it sits in on the All Plugins tab (see EFFECTS)
 # art: display images copied from the plugin's repo (Resources/images/...), first one is the card image
 # features: (title, explanation[, picture file in images/plugins/<slug>/]) - without one a matching screenshot is used
@@ -60,8 +60,8 @@ PLUGINS = [
        ("Arpeggiator", "ARP plays held notes in the same rhythm: UP, DOWN, RANDOM or CURSED."),
        ("Effects built in", "SCREAM, WHISPERS, CURSE, SUMMON, DESCEND, a reverb, Abyssdelay's delay and Hate Tape."),
       ]),
- dict(slug="drum-dog", name="Drum Dog", repo="drum-dog", series="doghouse", effect="drums", type="Drum prep",
-      tag="Everything a multitrack drum kit needs before the mix: level, align and trigger, on every drum track.",
+ dict(slug="drum-dog", name="Drum Dog", repo="drum-dog", series="drumdog", effect="drums", type="Drum prep",
+      tag="Everything a multitrack drum kit needs before the mix: level, align and trigger, on every drum track. Soon splitting into three DrumDog plugins: Dog Align, Dog Leveller and Dog Midi.",
       art=[],
       features=[
        ("LEVEL", "Evens out every hit to a target, keeps ghost notes, and lets you drag any hit up or down by hand. Group snare top and bottom so they level together."),
@@ -79,7 +79,7 @@ PLUGINS = [
        ("Masking and FETCH", "Every Bloodhound shows which other tracks mask it and where. FETCH adds the cuts for you, live or as a snapshot, with priorities so the right track gives way."),
        ("Auto gain", "Keeps the level the same as you EQ, so you hear the change, not the volume."),
       ]),
- dict(slug="hush-puppy", name="Hush Puppy", repo="hush-puppy", series="doghouse", effect="drums", type="Bleed remover",
+ dict(slug="hush-puppy", name="Hush Puppy", repo="hush-puppy", series="drumdog", effect="drums", type="Bleed remover",
       tag="A dynamic high shelf that takes cymbal and hi-hat bleed off your drum mics and leaves the hits alone.",
       art=[],
       features=[
@@ -87,6 +87,16 @@ PLUGINS = [
        ("Lookahead", "Up to 10 ms, so the shelf is already open when the stick lands."),
        ("LEARN", "Listens to six seconds of the drum and sets the threshold between the bleed and the hits for you."),
        ("Key and listen", "Use the track or a side chain as the key, filter it, and listen to the key or to just what's removed."),
+      ]),
+ dict(slug="angry-dog", name="Angry Dog", repo="angry-dog", series="drumdog", effect="dyn", type="Compressor",
+      tag="A compressor with attitude, in the spirit of the famous Distressor, with a side chain that sniffs out exactly what you want it to react to.",
+      art=[],
+      features=[
+       ("Eight ratios, eight characters", "No threshold knob: each RATIO has its own threshold, knee and timing. 2:1 glues, 10:1 OPTO lets go like an optical leveller, NUKE is a brick wall. Drive it with INPUT and it bites harder.", "shot-angrydog-main.jpg"),
+       ("RABID", "The famous all-buttons-in trick, on any ratio. BITE and GROWL add more attitude when you want it.", "shot-angrydog-rabid.jpg"),
+       ("Colour that never smears", "DIST 2, DIST 3, GROWL and HEADROOM only add harmonics, which grow as it works harder."),
+       ("SNIFF side chain", "Filter the key with HP and BAND, use an external side chain, and listen to the key or the difference.", "shot-angrydog-sniff.jpg"),
+       ("CHAIN and AUTO GAIN", "CHAIN keeps the lows dry, AUTO GAIN takes the input back off at the output, and QUALITY runs it at 1x, 2x or 4x."),
       ]),
  dict(slug="howl-room", name="Howl Room", repo="howl-room", series="howl", effect="verb", type="Room reverb",
       tag="A clean wooden room reverb with a built-in match EQ. The dog howls louder the more you add.",
@@ -162,8 +172,8 @@ PLUGINS = [
        ("Side chain and ducker", "Key it from another track, or use the built-in DUCKER."),
        ("HAUNT", "For when clean dynamics aren't enough."),
       ]),
- dict(slug="shell-shock", name="Shell Shock", repo="shell-shock", series="studio", effect="drums", type="Drum clipper",
-      tag="A drum shell clipper for kick, snare and toms, from gentle saturation to hard clipping.",
+ dict(slug="big-dog", name="Big Dog", repo="shell-shock", series="drumdog", effect="drums", type="Drum clipper",
+      tag="Big, fat drums: a shell clipper for kick, snare and toms, from gentle saturation to hard clipping. Formerly Shell Shock.",
       art=["hammer-zap.jpg"],
       features=[
        ("Ten HEAT modes", "1 to 5 saturate gently, 6 to 10 clip hard."),
@@ -219,9 +229,10 @@ PLUGINS = [
 
 SERIES = [
  ("evil", "EVIL series", "Dark, animated effects with a twisted streak."),
- ("doghouse", "Dog House series", "Clean, surgical tools for mixing, mastering and drum prep."),
+ ("doghouse", "Dog House series", "Clean, surgical tools for mixing and mastering."),
+ ("drumdog", "DrumDog series", "Drum production, from prep to punch: align, level, trigger, de-bleed, compress and clip your kit."),
  ("howl", "HOWL series", "Clean and goofy reverbs, one space per plugin, with the howling dog."),
- ("studio", "Studio", "Everyday mixing tools: compression and drum clipping."),
+ ("studio", "Studio", "Everyday mixing tools."),
  ("amps", "Amps", "Guitar and bass amps with full effects racks."),
 ]
 
