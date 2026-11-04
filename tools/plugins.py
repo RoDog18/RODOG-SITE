@@ -172,8 +172,8 @@ PLUGINS = [
        ("Side chain and ducker", "Key it from another track, or use the built-in DUCKER."),
        ("HAUNT", "For when clean dynamics aren't enough."),
       ]),
- dict(slug="shell-shock", name="Shell Shock", repo="shell-shock", series="drumdog", effect="drums", type="Drum clipper",
-      tag="A drum shell clipper for kick, snare and toms, from gentle saturation to hard clipping.",
+ dict(slug="big-dog", name="Big Dog", repo="shell-shock", series="drumdog", effect="drums", type="Drum clipper",
+      tag="Big, fat drums: a shell clipper for kick, snare and toms, from gentle saturation to hard clipping. Formerly Shell Shock.",
       art=["hammer-zap.jpg"],
       features=[
        ("Ten HEAT modes", "1 to 5 saturate gently, 6 to 10 clip hard."),
