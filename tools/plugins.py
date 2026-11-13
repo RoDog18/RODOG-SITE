@@ -1,10 +1,11 @@
 # Plugin catalogue for the RoDog site. One entry per plugin.
-# series: evil | doghouse | howl | amps | studio
+# series: evil | doghouse | drumdog | amps | howl
+# name: the plug-in's DAW name, SUITE-Plugin-Type (RoDog 2026-11-13)
 # effect: which group it sits in on the All Plugins tab (see EFFECTS)
 # art: display images copied from the plugin's repo (Resources/images/...), first one is the card image
 # features: (title, explanation[, picture file in images/plugins/<slug>/]) - without one a matching screenshot is used
 PLUGINS = [
- dict(slug="fanger", name="Fanger", repo="fanger", series="evil", effect="mod", type="Flanger",
+ dict(slug="fanger", name="EVIL-Fanger-Flanger", repo="fanger", series="evil", effect="mod", type="Flanger",
       tag="Eight flavours of flange, from classic jet sweeps to through-zero tape and an endless spiral.",
       art=["fanger-sky.jpg"],
       features=[
@@ -14,7 +15,7 @@ PLUGINS = [
        ("Eight advanced cards", "BURN, TONE, DUCK, WIDTH, STEPS, SIDECHAIN, TRIGGER and MANGLE take it further when you need them."),
        ("A display that moves", "Bats swoop across a blood moon with the sweep, and more of them come out the harder you push it."),
       ]),
- dict(slug="death-rattle", name="Death Rattle", repo="death-rattle", series="evil", effect="mod", type="Tremolo",
+ dict(slug="death-rattle", name="EVIL-DeathRattle-Tremolo", repo="death-rattle", series="evil", effect="mod", type="Tremolo",
       tag="A tremolo with eight afflictions, from amp shiver and hard chop to harmonic trem and auto-pan.",
       art=["rattle-snake.jpg"],
       features=[
@@ -24,7 +25,7 @@ PLUGINS = [
        ("Eight advanced cards", "FEVER, TONE, DUCK, WIDTH, STEPS, SIDECHAIN, PALSY and VENOM."),
        ("A display that moves", "The snake rattles, its eye glows and lightning cracks as the tremolo moves."),
       ]),
- dict(slug="ectophase", name="Ectophase", repo="ectophase", series="evil", effect="mod", type="Phaser",
+ dict(slug="ectophase", name="EVIL-Ectophase-Phaser", repo="ectophase", series="evil", effect="mod", type="Phaser",
       tag="A phaser with eight spirits, from a gentle 4-stage wisp to a 24-stage legion.",
       art=["ecto-smoke.jpg"],
       features=[
@@ -33,7 +34,7 @@ PLUGINS = [
        ("Possess, flip and still", "POSSESS lets your playing drive it, FLIP inverts it and STILL freezes the sweep."),
        ("Eight advanced cards", "DRIVE, TONE, DUCK, WIDTH, WOBBLE, STEP SEQ, SIDECHAIN and CURSE."),
       ]),
- dict(slug="doppelghast", name="Doppelghast", repo="doppelghast", series="evil", effect="mod", type="Chorus",
+ dict(slug="doppelghast", name="EVIL-Doppelghast-Chorus", repo="doppelghast", series="evil", effect="mod", type="Chorus",
       tag="A chorus with eight modes, from a classic stereo chorus to an octave-down shadow choir.",
       art=["doppelghast-forest.jpg"],
       features=[
@@ -42,7 +43,7 @@ PLUGINS = [
        ("Vibrato and still", "Switch to pure VIBRATO, or STILL to hold the modulation."),
        ("Eight advanced cards", "BBD, TONE, DUCK, WIDTH, SHADOW, WHISPERS, SIDECHAIN and CURSE."),
       ]),
- dict(slug="the-embalmer", name="The Embalmer", repo="the-embalmer", series="evil", effect="drive", type="Multiband distortion",
+ dict(slug="the-embalmer", name="EVIL-Embalmer-Distortion", repo="the-embalmer", series="evil", effect="drive", type="Multiband distortion",
       tag="Four-band distortion with five flavours, voiced for guitar, drums, vocals or the master.",
       art=["embalmer-zap.jpg"],
       features=[
@@ -50,7 +51,7 @@ PLUGINS = [
        ("Five flavours", "FORMALDEHYDE (tube), ROT (tape), GRAVE DIRT (fuzz), BONE SAW (rectify and fold) and CREMATE (bit and rate crush)."),
        ("Four modes", "GUITAR, DRUMS, VOCALS and MASTER voice the engine for the job without touching your band settings."),
       ]),
- dict(slug="necrosynth", name="Necrosynth", repo="necrosynth", series="evil", effect="inst", type="Synth",
+ dict(slug="necrosynth", name="EVIL-Necrosynth-Synth", repo="necrosynth", series="evil", effect="inst", type="Synth",
       tag="A synth with five sound engines, one-key chords, a rhythm pad and an arpeggiator.",
       art=["skull.jpg"],
       features=[
@@ -60,8 +61,8 @@ PLUGINS = [
        ("Arpeggiator", "ARP plays held notes in the same rhythm: UP, DOWN, RANDOM or CURSED."),
        ("Effects built in", "SCREAM, WHISPERS, CURSE, SUMMON, DESCEND, a reverb, Abyssdelay's delay and Hate Tape."),
       ]),
- dict(slug="drum-dog", name="Drum Dog", repo="drum-dog", series="doghouse", effect="drums", type="Drum prep",
-      tag="Everything a multitrack drum kit needs before the mix: level, align and trigger, on every drum track.",
+ dict(slug="drum-dog", name="Drum Dog", repo="drum-dog", series="drumdog", effect="drums", type="Drum prep",
+      tag="Everything a multitrack drum kit needs before the mix: level, align and trigger, on every drum track. Soon splitting into three DrumDog plugins: Dog Align, Dog Leveller and Dog Midi.",
       art=[],
       features=[
        ("LEVEL", "Evens out every hit to a target, keeps ghost notes, and lets you drag any hit up or down by hand. Group snare top and bottom so they level together."),
@@ -69,7 +70,7 @@ PLUGINS = [
        ("TRIGGER", "Turns hits into MIDI. Drag the notes onto a MIDI track, or send them live as the track plays. FETCH ignores bleed from the other drums."),
        ("The pack", "Every Drum Dog in the session knows about the others. CAPTURE arms them all at once, and in ARA hosts (Logic, REAPER, Cubase, Studio One, Pro Tools) it reads the clips without playing."),
       ]),
- dict(slug="bloodhound", name="Bloodhound", repo="bloodhound", series="doghouse", effect="eq", type="Dynamic EQ",
+ dict(slug="bloodhound", name="DH-BloodHound-EQ", repo="bloodhound", series="doghouse", effect="eq", type="Dynamic EQ",
       tag="A surgical 64-band dynamic EQ that shows you where your tracks mask each other.",
       art=[],
       features=[
@@ -79,7 +80,7 @@ PLUGINS = [
        ("Masking and FETCH", "Every Bloodhound shows which other tracks mask it and where. FETCH adds the cuts for you, live or as a snapshot, with priorities so the right track gives way."),
        ("Auto gain", "Keeps the level the same as you EQ, so you hear the change, not the volume."),
       ]),
- dict(slug="hush-puppy", name="Hush Puppy", repo="hush-puppy", series="doghouse", effect="drums", type="Bleed remover",
+ dict(slug="hush-puppy", name="DD-HushPuppy-GateDucker", repo="hush-puppy", series="drumdog", effect="drums", type="Bleed remover",
       tag="A dynamic high shelf that takes cymbal and hi-hat bleed off your drum mics and leaves the hits alone.",
       art=[],
       features=[
@@ -88,7 +89,17 @@ PLUGINS = [
        ("LEARN", "Listens to six seconds of the drum and sets the threshold between the bleed and the hits for you."),
        ("Key and listen", "Use the track or a side chain as the key, filter it, and listen to the key or to just what's removed."),
       ]),
- dict(slug="howl-room", name="Howl Room", repo="howl-room", series="howl", effect="verb", type="Room reverb",
+ dict(slug="angry-dog", name="DH-AngryDog-Comp", repo="angry-dog", series="doghouse", effect="dyn", type="Compressor",
+      tag="A compressor with attitude, in the spirit of the famous Distressor, with a side chain that sniffs out exactly what you want it to react to.",
+      art=[],
+      features=[
+       ("Eight ratios, eight characters", "No threshold knob: each RATIO has its own threshold, knee and timing. 2:1 glues, 10:1 OPTO lets go like an optical leveller, NUKE is a brick wall. Drive it with INPUT and it bites harder.", "shot-angrydog-main.jpg"),
+       ("RABID", "The famous all-buttons-in trick, on any ratio. BITE and GROWL add more attitude when you want it.", "shot-angrydog-rabid.jpg"),
+       ("Colour that never smears", "DIST 2, DIST 3, GROWL and HEADROOM only add harmonics, which grow as it works harder."),
+       ("SNIFF side chain", "Filter the key with HP and BAND, use an external side chain, and listen to the key or the difference.", "shot-angrydog-sniff.jpg"),
+       ("CHAIN and AUTO GAIN", "CHAIN keeps the lows dry, AUTO GAIN takes the input back off at the output, and QUALITY runs it at 1x, 2x or 4x."),
+      ]),
+ dict(slug="howl-room", name="HOWL-Room-Reverb", repo="howl-room", series="howl", effect="verb", type="Room reverb",
       tag="A clean wooden room reverb with a built-in match EQ. The dog howls louder the more you add.",
       art=["howl-wood.jpg"],
       features=[
@@ -97,7 +108,7 @@ PLUGINS = [
        ("Match EQ inside", "From MatchMe: learn a reference and the room's tail is EQ'd to match it, once or live."),
        ("It howls", "The more reverb you dial in, the more the plugin turns into a wooden room and the louder the dog howls."),
       ]),
- dict(slug="howl-plate", name="Howl Plate", repo="howl-plate", series="howl", effect="verb", type="Plate reverb",
+ dict(slug="howl-plate", name="HOWL-Plate-Reverb", repo="howl-plate", series="howl", effect="verb", type="Plate reverb",
       tag="A bright, silky steel plate reverb with a built-in match EQ.",
       art=["howl-steel.jpg"],
       features=[
@@ -106,7 +117,7 @@ PLUGINS = [
        ("Tail section", "RELEASE, GRIT, PRESENCE and GRIT MIX only touch the reverb tail."),
        ("Match EQ inside", "From MatchMe: learn a reference and the plate's tail is EQ'd to match it."),
       ]),
- dict(slug="macabreverb", name="Macabreverb", repo="macabreverb", series="evil", effect="verb", type="Reverb",
+ dict(slug="macabreverb", name="EVIL-Macabreverb-Reverb", repo="macabreverb", series="evil", effect="verb", type="Reverb",
       tag="Nine reverb spaces with shimmer, freeze, tempo sync and MatchMe on the tail.",
       art=["cistern-loud.jpg"],
       features=[
@@ -116,7 +127,7 @@ PLUGINS = [
        ("Advanced modules", "CHAMBER, TAIL EQ, MOTION, SHIMMER, HAUNT, GATE and DUCK, all off until you want them."),
        ("MatchMe on the tail", "Match the reverb to the dry signal, the side chain or a file. The dry is never touched."),
       ]),
- dict(slug="abyssdelay", name="Abyssdelay", repo="abyssdelay", series="evil", effect="delay", type="Delay",
+ dict(slug="abyssdelay", name="EVIL-Abyssdelay-Delay", repo="abyssdelay", series="evil", effect="delay", type="Delay",
       tag="Seven delay modes, a rhythm pad that writes patterns, prime-number taps and MatchMe on the repeats.",
       art=["sea.jpg"],
       features=[
@@ -126,7 +137,7 @@ PLUGINS = [
        ("Advanced", "Tape wobble, filter sweep, diffusion, multi-tap rhythm, runaway SUMMON feedback, ducking and FREEZE."),
        ("MatchMe on the repeats", "Match the repeats to the dry signal, the side chain or a file."),
       ]),
- dict(slug="hate-tape", name="Hate Tape", repo="hate-tape", series="evil", effect="drive", type="Tape",
+ dict(slug="hate-tape", name="EVIL-HateTape-Tape", repo="hate-tape", series="evil", effect="drive", type="Tape",
       tag="Tape and cassette machines, from 2-inch multitrack to VHS, with wear, wow and flutter, and tape stop.",
       art=["cassette.jpg"],
       features=[
@@ -136,7 +147,7 @@ PLUGINS = [
        ("Transport", "Wow and flutter, WARP for a stretched tape, and STOP for tape stops."),
        ("Head and noise", "Azimuth, crosstalk, hiss and noise reduction that can be misaligned on purpose."),
       ]),
- dict(slug="dubbly-wubbly", name="Dubbly Wubbly", repo="dubbly-wubbly", series="evil", effect="mod", type="Doubler",
+ dict(slug="dubbly-wubbly", name="EVIL-DubblyWubbly-Doubler", repo="dubbly-wubbly", series="evil", effect="mod", type="Doubler",
       tag="Six ways to double a part, with the low end always kept tight in the middle.",
       art=["funhouse.jpg"],
       features=[
@@ -145,7 +156,7 @@ PLUGINS = [
        ("Low end stays mono", "Nothing below the split is doubled, so bass and kick stay solid."),
        ("Advanced modules", "Octave ghosts, tone, Haas offset, ducking, spin, drift and a mono check with a correlation meter."),
       ]),
- dict(slug="the-surgeon", name="The Surgeon", repo="acute-eq", series="doghouse", effect="eq", type="Resonance suppressor",
+ dict(slug="the-surgeon", name="DH-Surgeon-ResonanceSuppressor", repo="acute-eq", series="doghouse", effect="eq", type="Resonance suppressor",
       tag="Finds and removes harsh resonances as the music changes, plus four EQ bands on the analyser.",
       art=[],
       features=[
@@ -154,7 +165,7 @@ PLUGINS = [
        ("Four EQ bands", "Low shelf, two bells and high shelf. Drag them right on the analyser."),
        ("DELTA", "Hear only what is being removed."),
       ]),
- dict(slug="gain-reaper", name="Gain Reaper", repo="gain-reaper", series="studio", effect="dyn", type="Compressor",
+ dict(slug="gain-reaper", name="EVIL-GainReaper-Comp", repo="gain-reaper", series="evil", effect="dyn", type="Compressor",
       tag="Sixteen compressor models on one engine, with side chain, a ducker and HAUNT.",
       art=["display.jpg"],
       features=[
@@ -162,24 +173,15 @@ PLUGINS = [
        ("Side chain and ducker", "Key it from another track, or use the built-in DUCKER."),
        ("HAUNT", "For when clean dynamics aren't enough."),
       ]),
- dict(slug="shell-shock", name="Shell Shock", repo="shell-shock", series="studio", effect="drums", type="Drum clipper",
-      tag="A drum shell clipper for kick, snare and toms, from gentle saturation to hard clipping.",
+ dict(slug="shell-shock", name="EVIL-ShellShock-Clipper", repo="shell-shock", series="evil", effect="drive", type="Clipper",
+      tag="A clipper with ten HEAT modes, from gentle saturation to hard clipping, single or dual band.",
       art=["hammer-zap.jpg"],
       features=[
        ("Ten HEAT modes", "1 to 5 saturate gently, 6 to 10 clip hard."),
        ("Harmonic bars", "See and shape the harmonics from H2 to H9."),
        ("Punch and body", "PUNCH and BODY shaping, plus an optional dual-band split."),
       ]),
- dict(slug="shellgate", name="ShellGate", repo="shellgate", series="doghouse", effect="drums", type="Drum gate",
-      tag="A lookahead bleed gate for close kick, snare and tom mics.",
-      art=[],
-      features=[
-       ("See every hit", "A scrolling waveform shows the input, what passes and every trigger. Drag the open and close lines right on it."),
-       ("Lookahead and hysteresis", "Opens before the hit so the attack is never clipped, and never chatters on a decaying tom."),
-       ("Bleed reject", "Route the snare mic to the side chain and its hits are ignored by the kick gate."),
-       ("Listen", "Hear the output, the key, or exactly what's removed."),
-      ]),
- dict(slug="guard-dog", name="Guard Dog", repo="gaurd-dog", series="doghouse", effect="dyn", type="Limiter",
+ dict(slug="guard-dog", name="DH-GuardDog-Limiter", repo="gaurd-dog", series="doghouse", effect="dyn", type="Limiter",
       tag="A clean true peak limiter. With nothing to limit, the output is bit-identical to the input.",
       art=[],
       features=[
@@ -188,7 +190,7 @@ PLUGINS = [
        ("True peak quality", "4x, 8x or 16x true peak detection, linked or dual stereo."),
        ("Transparent", "Nothing filters, oversamples or shapes the audio. It's only delayed and turned down."),
       ]),
- dict(slug="matchme", name="MatchMe", repo="matchme", series="doghouse", effect="eq", type="Match EQ",
+ dict(slug="matchme", name="DH-MatchMe-MatchEQ", repo="matchme", series="doghouse", effect="eq", type="Match EQ",
       tag="Learn a reference and match it, or push away from it, at zero latency.",
       art=[],
       features=[
@@ -197,7 +199,7 @@ PLUGINS = [
        ("Live match", "Keep matching while the music plays."),
        ("Save references", "Keep any reference curve and reuse it in any session, and in Macabreverb, Abyssdelay and the HOWL reverbs."),
       ]),
- dict(slug="the-brutal", name="The Brutal", repo="the-brutal", series="amps", effect="amps", type="Metal amp",
+ dict(slug="the-brutal", name="AMP-TheBrutal-GuitarAmp", repo="the-brutal", series="amps", effect="amps", type="Metal amp",
       tag="A high-gain metal amp with CLEAN, TIGHT and SLUDGE channels and a full effects rack.",
       art=[],
       features=[
@@ -206,7 +208,7 @@ PLUGINS = [
        ("Pages", "PRE FX, AMP, POST FX, EQ, IR and TAPE."),
        ("Built-in tuner", "Plus MIDI learn for every control and preset up and down."),
       ]),
- dict(slug="the-subrutal", name="The Subrutal", repo="the-subrutal", series="amps", effect="amps", type="Bass amp",
+ dict(slug="the-subrutal", name="AMP-Subrutal-BassAmp", repo="the-subrutal", series="amps", effect="amps", type="Bass amp",
       tag="A bass amp that runs a dirty and a clean path at once, with eight heads and a kick ducker.",
       art=[],
       features=[
@@ -215,14 +217,98 @@ PLUGINS = [
        ("Full chain", "Sub synth, graphic EQ, drive, cab and IR with DI blend, mud tamer, comp, chorus, delay, reverb and tape."),
        ("THE PIT", "A kick ducker that listens to the side chain or MIDI notes."),
       ]),
+ dict(slug="heel", name="DH-Heel-Comp", repo="heel", series="doghouse", effect="dyn", type="Compressor",
+      tag="A completely transparent compressor with full side-chain, tempo sync and a big scrolling display.",
+      art=[],
+      features=[
+       ("What it does", "A completely transparent compressor with full side-chain, tempo sync and a big scrolling display."),
+      ]),
+ dict(slug="shepherd", name="DH-Shepherd-MultibandComp", repo="shepherd", series="doghouse", effect="dyn", type="Multiband compressor",
+      tag="Four-band transparent compression, downward and upward, with side-chain on every band.",
+      art=[],
+      features=[
+       ("What it does", "Four-band transparent compression, downward and upward, with side-chain on every band."),
+      ]),
+ dict(slug="hackles", name="DH-Hackles-Transient", repo="hackles", series="doghouse", effect="dyn", type="Transient shaper",
+      tag="Clean transient shaping you can see: drag attack and sustain right on the hit.",
+      art=[],
+      features=[
+       ("What it does", "Clean transient shaping you can see: drag attack and sustain right on the hit."),
+      ]),
+ dict(slug="brindle", name="DH-Brindle-Saturator", repo="brindle", series="doghouse", effect="drive", type="Tape machine",
+      tag="A brindle coat is many colours blended into one. BRINDLE is a tape machine: it blends the colour of real tape into your sound, for lift on top, weight underneath and glue in between.",
+      art=[],
+      features=[
+       ("What it does", "A brindle coat is many colours blended into one. BRINDLE is a tape machine: it blends the colour of real tape into your sound, for lift on top, weight underneath and glue in between."),
+      ]),
+ dict(slug="off-leash", name="DH-OffLeash-Imager", repo="off-leash", series="doghouse", effect="mod", type="Stereo imager",
+      tag="Six mono-safe widening styles, up to six bands, before-and-after display.",
+      art=[],
+      features=[
+       ("What it does", "Six mono-safe widening styles, up to six bands, before-and-after display."),
+      ]),
+ dict(slug="howl-church", name="HOWL-Church-Reverb", repo="howl-church", series="howl", effect="verb", type="Church reverb",
+      tag="A stone chapel, church or cathedral, with the built-in match EQ.",
+      art=[],
+      features=[
+       ("What it does", "A stone chapel, church or cathedral, with the built-in match EQ."),
+      ]),
+ dict(slug="howl-hall", name="HOWL-Hall-Reverb", repo="howl-hall", series="howl", effect="verb", type="Hall reverb",
+      tag="A warm concert hall, from recital room to grand hall, with the built-in match EQ.",
+      art=[],
+      features=[
+       ("What it does", "A warm concert hall, from recital room to grand hall, with the built-in match EQ."),
+      ]),
+ dict(slug="dog-align", name="DD-DogAlign-Aligner", repo="dog-align", series="drumdog", effect="drums", type="Drum phase aligner",
+      tag="Lines every drum mic up with one master mic, in time and in phase: TIME, POLARITY, per-band ROTATE and AUTO ALIGN.",
+      art=[],
+      features=[
+       ("What it does", "Lines every drum mic up with one master mic, in time and in phase: TIME, POLARITY, per-band ROTATE and AUTO ALIGN."),
+      ]),
+ dict(slug="dog-leveller", name="DD-DogLeveller-Leveller", repo="dog-leveller", series="drumdog", effect="drums", type="Drum hit leveller",
+      tag="Every drum hit at the level you want, auto and by hand.",
+      art=[],
+      features=[
+       ("What it does", "Every drum hit at the level you want, auto and by hand."),
+      ]),
+ dict(slug="dog-midi", name="DD-DogMidi-Trigger", repo="dog-midi", series="drumdog", effect="drums", type="Drum trigger to MIDI",
+      tag="Turns your drum hits into MIDI, ignoring the bleed.",
+      art=[],
+      features=[
+       ("What it does", "Turns your drum hits into MIDI, ignoring the bleed."),
+      ]),
+ dict(slug="show-dog", name="DH-ShowDog-Exciter", repo="show-dog", series="doghouse", effect="excite", type="Exciter",
+      tag="Brings out detail and sparkle so a sound steps out in front.",
+      art=[],
+      features=[
+       ("What it does", "Brings out detail and sparkle so a sound steps out in front."),
+      ]),
+ dict(slug="underdog", name="DH-Underdog-LowEndExciter", repo="underdog", series="doghouse", effect="excite", type="Low-end exciter",
+      tag="Adds thump, weight and sub to anything: kicks, snares, bass or the whole mix.",
+      art=[],
+      features=[
+       ("What it does", "Adds thump, weight and sub to anything: kicks, snares, bass or the whole mix."),
+      ]),
+ dict(slug="goreworks", name="EVIL-Goreworks-IndustrialSynth", repo="goreworks", series="evil", effect="inst", type="Industrial synth",
+      tag="A heavy industrial synth with six engines, an analog core, power chords and a grinding groove.",
+      art=[],
+      features=[
+       ("What it does", "A heavy industrial synth with six engines, an analog core, power chords and a grinding groove."),
+      ]),
+ dict(slug="requiem", name="EVIL-Requiem-Orchestra", repo="requiem", series="evil", effect="inst", type="Cinematic orchestra",
+      tag="A dark cinematic orchestra with a black hole, an analog core, one-finger chords and three routes.",
+      art=[],
+      features=[
+       ("What it does", "A dark cinematic orchestra with a black hole, an analog core, one-finger chords and three routes."),
+      ]),
 ]
 
 SERIES = [
  ("evil", "EVIL series", "Dark, animated effects with a twisted streak."),
- ("doghouse", "Dog House series", "Clean, surgical tools for mixing, mastering and drum prep."),
+ ("doghouse", "Dog House Suite", "Clean, premium tools for mixing and mastering."),
+ ("drumdog", "DrumDog series", "Drum production, from prep to punch: align, level, trigger, de-bleed and clip your kit."),
+ ("amps", "AMP-Dogs series", "Guitar and bass amps with full effects racks."),
  ("howl", "HOWL series", "Clean and goofy reverbs, one space per plugin, with the howling dog."),
- ("studio", "Studio", "Everyday mixing tools: compression and drum clipping."),
- ("amps", "Amps", "Guitar and bass amps with full effects racks."),
 ]
 
 EFFECTS = [
@@ -235,4 +321,6 @@ EFFECTS = [
  ("drums", "Drum tools"),
  ("amps", "Amps"),
  ("inst", "Instruments"),
+ ("samp", "Samplers"),
+ ("excite", "Exciters"),
 ]
