@@ -89,7 +89,7 @@ PLUGINS = [
        ("LEARN", "Listens to six seconds of the drum and sets the threshold between the bleed and the hits for you."),
        ("Key and listen", "Use the track or a side chain as the key, filter it, and listen to the key or to just what's removed."),
       ]),
- dict(slug="angry-dog", name="DD-AngryDog-Comp", repo="angry-dog", series="drumdog", effect="dyn", type="Compressor",
+ dict(slug="angry-dog", name="DH-AngryDog-Comp", repo="angry-dog", series="doghouse", effect="dyn", type="Compressor",
       tag="A compressor with attitude, in the spirit of the famous Distressor, with a side chain that sniffs out exactly what you want it to react to.",
       art=[],
       features=[
