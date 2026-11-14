@@ -1,7 +1,9 @@
 # Builds the RoDog site from plugins.py into the site folder given as argv[1].
 import hashlib, html, os, shutil, sys
 sys.path.insert(0, os.path.dirname(__file__))
+import plugins as catalogue
 from plugins import PLUGINS, SERIES, EFFECTS
+KENNEL = getattr(catalogue, "KENNEL_DOWNLOADS", {})
 from legal import PAGES as LEGAL
 
 out = sys.argv[1]
@@ -21,16 +23,16 @@ def head(title, depth, desc):
 <meta name="description" content="{e(desc)}">
 <link rel="icon" href="{up}images/rodog-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{up}style.css?v={ver}">
 </head>
 <body>
-<header class="top"><div class="wrap"><nav>
+<header class="top"><div class="wrap"><nav class="bar" aria-label="Main">
   <a class="logo" href="{up}index.html"><img src="{up}images/rodog-logo.png" alt="The Dog House by RoDog Audio"></a>
   <ul>
-    <li><a href="{up}index.html#plugins">Plugins</a></li>
-    <li><a href="{up}index.html#download">Download</a></li>
-    <li><a class="cart" href="#" aria-disabled="true" title="Shop coming soon">Cart (0)</a></li>
+    <li class="plugins-link"><a href="{up}index.html#plugins">Plugins</a></li>
+    <li><span class="cart" aria-disabled="true" title="The shop opens at launch">Cart (0)</span></li>
+    <li><a class="btn" href="{up}index.html#download">Get The Kennel</a></li>
   </ul>
 </nav></div></header>
 """
@@ -40,7 +42,7 @@ def foot(depth):
     return f"""<footer><div class="wrap">
   <img src="{up}images/rodog-logo.png" alt="RoDog Audio">
   <ul class="flinks">""" + "".join(f'<li><a href="{up}{lp["slug"]}.html">{lp["nav"]}</a></li>' for lp in LEGAL) + f"""</ul>
-  <span>The Dog House · © 2026 RoDog Audio</span>
+  <span>© 2026 RoDog Audio</span>
 </div></footer>
 <script src="{up}site.js?v={ver}"></script>
 </body>
@@ -57,26 +59,41 @@ def media(p, depth, extra=""):
         return f'<img class="art{extra}" src="{up}images/plugins/{p["slug"]}/{p["art"][0]}" alt="{e(p["name"])} display art">'
     return f'<div class="tile{extra}"><span>{e(p["name"])}</span></div>'
 
+def wname(n):
+    """A plug-in name with line-break chances after each hyphen (DAW names like DH-Surgeon-ResonanceSuppressor)."""
+    return e(n).replace("-", "-<wbr>")
+
+def kind(p):
+    return f'<p class="pkind"><span class="sname">{e(series_name[p["series"]])}</span><span>{e(p["type"])}</span></p>'
+
 def card(p):
-    return f"""      <a class="pcard" href="plugins/{p['slug']}.html" data-series="{p['series']}">
+    return f"""      <a class="pcard s-{p['series']}" href="plugins/{p['slug']}.html" data-series="{p['series']}">
         <div class="pmedia">{media(p, 0)}</div>
         <div class="pbody">
-          <div class="pmeta"><span class="badge s-{p['series']}">{e(series_name[p['series']])}</span><span>{e(p['type'])}</span></div>
-          <h3 class="display">{e(p['name'])}</h3>
-          <p>{e(p['tag'])}</p>
+          <h3>{wname(p['name'])}</h3>
+          {kind(p)}
+          <p class="ptag">{e(p['tag'])}</p>
         </div>
       </a>
 """
 
+def kennel_buttons():
+    out = []
+    for key, label in (("mac", "Download for Mac"), ("windows", "Download for Windows")):
+        url = KENNEL.get(key, "")
+        out.append(f'<a class="btn" href="{e(url)}">{label}</a>' if url else f'<span class="btn" aria-disabled="true">{label}</span>')
+    later = "" if all(KENNEL.get(k) for k in ("mac", "windows")) else '\n      <p class="later">The download links go live when The Kennel is released.</p>'
+    return '<div class="actions">' + "".join(out) + "</div>" + later
+
 def index():
-    tabs = '<button class="tab on" data-tab="all">All Plugins</button>' + "".join(
-        f'<button class="tab" data-tab="{k}">{e(n)}</button>' for k, n, _ in SERIES)
+    tabs = '<button class="tab" role="tab" aria-selected="true" data-tab="all">All Plugins</button>' + "".join(
+        f'<button class="tab" role="tab" aria-selected="false" data-tab="{k}">{e(n)}</button>' for k, n, _ in SERIES)
     blurbs = "".join(f'<p class="blurb" data-blurb="{k}" hidden>{e(d)}</p>' for k, _, d in SERIES)
     by_effect = ""
     for k, n in EFFECTS:
         group = [p for p in PLUGINS if p["effect"] == k]
         if group:
-            by_effect += f'    <h3 class="cat">{e(n)}</h3>\n    <div class="pgrid">\n' + "".join(card(p) for p in group) + "    </div>\n"
+            by_effect += f'    <h3 class="cat">{e(n)} <span>{len(group)}</span></h3>\n    <div class="pgrid">\n' + "".join(card(p) for p in group) + "    </div>\n"
     by_series = "".join(card(p) for p in PLUGINS)
     return head("The Dog House | RoDog Audio plugins", 0, "The Dog House: audio plugins by RoDog Audio. VST3 and AU for macOS and Windows.") + f"""
 <main>
@@ -88,13 +105,18 @@ def index():
   </div>
   <section class="hero">
     <div class="wrap">
-      <h1 class="sitename display">The Dog House</h1>
-      <p class="lead">The home of RoDog Audio plugins, for producers, mix engineers, sound designers and musicians. Install and update them all with The Kennel.</p>
+      <h1>The Dog House</h1>
+      <p class="lead">Audio plugins for producers, mix engineers, sound designers and musicians.</p>
+      <div class="actions">
+        <a class="btn" href="#download">Get The Kennel</a>
+        <a class="btn quiet" href="#plugins">Browse the plugins</a>
+      </div>
     </div>
   </section>
 
   <section id="plugins"><div class="wrap">
-    <div class="tabs" role="tablist">{tabs}</div>
+    <div class="shelfhead"><h2>The plugins</h2><p>{len(PLUGINS)} plugins, all installed and updated through The Kennel.</p></div>
+    <div class="tabbar"><div class="tabs" role="tablist" aria-label="Series">{tabs}</div></div>
     {blurbs}
     <div id="by-effect">
 {by_effect}    </div>
@@ -105,18 +127,15 @@ def index():
   <section id="download" class="manager"><div class="wrap">
     <img class="sleeppup" src="images/dogs/pup-20210214_104640.png" alt="" aria-hidden="true">
     <img class="kennelpups" src="images/dogs/pup-20210218_090834.png" alt="" aria-hidden="true">
-    <div>
-      <h2 class="display">The Kennel</h2>
+    <div class="kennel">
+      <h2>The Kennel</h2>
       <p class="sub">One app to install, update and remove every RoDog plugin.</p>
-      <ol>
+      <ol class="steps">
         <li>Download The Kennel for your computer.</li>
         <li>Open it and pick the plugins you want, or install them all.</li>
-        <li>Restart your DAW. In Logic, look under Audio Units → RoDog.</li>
+        <li>Restart your DAW. In Logic, look under Audio Units, then RoDog.</li>
       </ol>
-      <div class="actions">
-        <a class="btn" href="#">Download for Mac</a>
-        <a class="btn" href="#">Download for Windows</a>
-      </div>
+      """ + kennel_buttons() + """
     </div>
   </div></section>
 """ + peek("pup-20210210_181158.png", 0) + """</main>
@@ -143,6 +162,16 @@ def plugin_page(p, i):
     up = "../"
     shots = p.get("shots", [])
     gallery_imgs = [f"images/plugins/{p['slug']}/{s}" for s in shots] + [f"images/plugins/{p['slug']}/{a}" for a in p["art"]]
+    still = (f"images/plugins/{p['slug']}/{shots[1]}" if len(shots) > 1 else
+             f"images/plugins/{p['slug']}/{p['art'][0]}" if p["art"] else None)
+    if p.get("video"):
+        watch = f'<div class="watch"><video controls preload="metadata" src="{up}{e(p["video"])}"></video></div>'
+    elif still:
+        watch = f'<div class="watch"><img src="{up}{still}" alt="{e(p["name"])}" loading="lazy"><span class="soon">Walkthrough video coming soon</span></div>'
+    else:
+        watch = ""
+    price = (f'<div class="price">{e(p["price"])}</div><button class="btn" disabled>Add to cart</button>' if p.get("price")
+             else '<div class="price">Price<small>Set at launch</small></div><button class="btn" disabled>Add to cart</button>')
     gallery = "".join(f'<img src="{up}{g}" alt="{e(p["name"])} picture {n+1}" loading="lazy">' for n, g in enumerate(gallery_imgs[1:]))
     feats = ""
     for n, f in enumerate(p["features"]):
@@ -156,9 +185,9 @@ def plugin_page(p, i):
         if pick:
             m = f'<img class="fpic" src="{up}images/plugins/{p["slug"]}/{pick}" alt="{e(p["name"])}: {e(title)}" loading="lazy">'
         else:
-            m = '<div class="vslot"><span>Picture coming soon</span></div>'
+            m = ""
         feats += f"""    <div class="feature{' flip' if n % 2 else ''}">
-      <div class="ftext"><h3 class="display">{e(title)}</h3><p>{e(text)}</p></div>
+      <div class="ftext"><h3>{e(title)}</h3><p>{e(text)}</p></div>
       <div class="fmedia">{m}</div>
     </div>
 """
@@ -169,41 +198,38 @@ def plugin_page(p, i):
 """ + backdog(STANDING[i % len(STANDING)], 1, "sidestage") + f"""<main class="product">
   <section class="phero"><div class="wrap">
     <div class="pmain">{media(p, 1, " big")}</div>
-    <div class="pinfo">
-      <a class="back" href="{up}index.html#plugins">← All plugins</a>
-      <div class="pmeta"><span class="badge s-{p['series']}">{e(series_name[p['series']])}</span><span>{e(p['type'])}</span></div>
-      <h1 class="display">{e(p['name'])}</h1>
+    <div class="pinfo s-{p['series']}">
+      <a class="back" href="{up}index.html#plugins">All plugins</a>
+      {kind(p)}
+      <h1>{wname(p['name'])}</h1>
       <p class="lead">{e(p['tag'])}</p>
-      <div class="buy">
-        <div class="price">Price coming soon</div>
-        <button class="btn" disabled>Add to cart</button>
-      </div>
-      <p class="note">Installs through the <a href="{up}index.html#download">The Kennel</a>. VST3 &amp; AU, macOS &amp; Windows.</p>
+      <div class="buy">{price}</div>
+      <p class="note">Installs through <a href="{up}index.html#download">The Kennel</a>. VST3 and AU, for macOS and Windows.</p>
     </div>
   </div></section>
 
-  <section class="overview"><div class="wrap">
-    <div class="vslot wide"><span class="play">▶</span><span>{e(p['name'])} walkthrough video coming soon</span></div>
+""" + (f"""  <section class="overview"><div class="wrap">
+    {watch}
   </div></section>
-
+""" if watch else "") + f"""
   <section class="features"><div class="wrap">
-    <h2 class="display">Features</h2>
+    <h2>Features</h2>
 {feats}  </div></section>
 """ + (f"""
   <section class="gallery"><div class="wrap">
-    <h2 class="display">Pictures</h2>
+    <h2>Pictures</h2>
     <div class="gimgs">{gallery}</div>
   </div></section>
 """ if gallery else "") + (f"""
   <section class="related"><div class="wrap">
-    <h2 class="display">More from the {e(series_name[p['series']])}</h2>
+    <h2>More from the {e(series_name[p['series']])}</h2>
     <div class="pgrid">
 {related}    </div>
   </div></section>
 """ if related else "") + f"""
-  <nav class="pnav wrap">
-    <a href="{prev_p['slug']}.html">← {e(prev_p['name'])}</a>
-    <a href="{next_p['slug']}.html">{e(next_p['name'])} →</a>
+  <nav class="pnav wrap" aria-label="Other plugins">
+    <a href="{prev_p['slug']}.html"><span>Previous</span>{wname(prev_p['name'])}</a>
+    <a class="next" href="{next_p['slug']}.html"><span>Next</span>{wname(next_p['name'])}</a>
   </nav>
 """ + peek(PUPS[i % len(PUPS)], 1) + """</main>
 """ + foot(1)
@@ -222,8 +248,8 @@ for i, p in enumerate(PLUGINS):
 def legal_page(lp):
     return head(f"{lp['title']} | The Dog House by RoDog Audio", 0, f"RoDog Audio {lp['title'].lower()}.") + f"""
 """ + backdog(LEGAL_DOGS.get(lp["slug"], "dog-37091.png"), 0, "sidestage") + f"""<main class="legal"><div class="wrap">
-  <a class="back" href="index.html">← Home</a>
-  <h1 class="display">{e(lp['title'])}</h1>
+  <a class="back" href="index.html">Home</a>
+  <h1>{e(lp['title'])}</h1>
 {lp['body']}
 </div>
 """ + peek(PUPS[(LEGAL.index(lp) + 5) % len(PUPS)], 0) + """</main>
