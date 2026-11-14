@@ -7,16 +7,16 @@
 <meta name="description" content="A surgical 64-band dynamic EQ that shows you where your tracks mask each other.">
 <link rel="icon" href="../images/rodog-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../style.css?v=66575029">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=61ea4c26">
 </head>
 <body>
-<header class="top"><div class="wrap"><nav>
+<header class="top"><div class="wrap"><nav class="bar" aria-label="Main">
   <a class="logo" href="../index.html"><img src="../images/rodog-logo.png" alt="The Dog House by RoDog Audio"></a>
   <ul>
-    <li><a href="../index.html#plugins">Plugins</a></li>
-    <li><a href="../index.html#download">Download</a></li>
-    <li><a class="cart" href="#" aria-disabled="true" title="Shop coming soon">Cart (0)</a></li>
+    <li class="plugins-link"><a href="../index.html#plugins">Plugins</a></li>
+    <li><span class="cart" aria-disabled="true" title="The shop opens at launch">Cart (0)</span></li>
+    <li><a class="btn" href="../index.html#download">Get The Kennel</a></li>
   </ul>
 </nav></div></header>
 
@@ -25,93 +25,90 @@
 <main class="product">
   <section class="phero"><div class="wrap">
     <div class="pmain"><img class="shot big" src="../images/plugins/bloodhound/shot-bloodhound-main.jpg" alt="DH-BloodHound-EQ plugin"></div>
-    <div class="pinfo">
-      <a class="back" href="../index.html#plugins">← All plugins</a>
-      <div class="pmeta"><span class="badge s-doghouse">Dog House Suite</span><span>Dynamic EQ</span></div>
-      <h1 class="display">DH-BloodHound-EQ</h1>
+    <div class="pinfo s-doghouse">
+      <a class="back" href="../index.html#plugins">All plugins</a>
+      <p class="pkind"><span class="sname">Dog House Suite</span><span>Dynamic EQ</span></p>
+      <h1>DH-<wbr>BloodHound-<wbr>EQ</h1>
       <p class="lead">A surgical 64-band dynamic EQ that shows you where your tracks mask each other.</p>
-      <div class="buy">
-        <div class="price">Price coming soon</div>
-        <button class="btn" disabled>Add to cart</button>
-      </div>
-      <p class="note">Installs through the <a href="../index.html#download">The Kennel</a>. VST3 &amp; AU, macOS &amp; Windows.</p>
+      <div class="buy"><div class="price">Price<small>Set at launch</small></div><button class="btn" disabled>Add to cart</button></div>
+      <p class="note">Installs through <a href="../index.html#download">The Kennel</a>. VST3 and AU, for macOS and Windows.</p>
     </div>
   </div></section>
 
   <section class="overview"><div class="wrap">
-    <div class="vslot wide"><span class="play">▶</span><span>DH-BloodHound-EQ walkthrough video coming soon</span></div>
+    <div class="watch"><img src="../images/plugins/bloodhound/shot-bloodhound-fetch.jpg" alt="DH-BloodHound-EQ" loading="lazy"><span class="soon">Walkthrough video coming soon</span></div>
   </div></section>
 
   <section class="features"><div class="wrap">
-    <h2 class="display">Features</h2>
+    <h2>Features</h2>
     <div class="feature">
-      <div class="ftext"><h3 class="display">64 bands, 9 shapes</h3><p>Bell, shelves, cuts up to 96 dB/oct, notch, band pass and tilts, with Q from 0.025 to 1000, in stereo, left, right, mid or side.</p></div>
+      <div class="ftext"><h3>64 bands, 9 shapes</h3><p>Bell, shelves, cuts up to 96 dB/oct, notch, band pass and tilts, with Q from 0.025 to 1000, in stereo, left, right, mid or side.</p></div>
       <div class="fmedia"><img class="fpic" src="../images/plugins/bloodhound/shot-bloodhound-main.jpg" alt="DH-BloodHound-EQ: 64 bands, 9 shapes" loading="lazy"></div>
     </div>
     <div class="feature flip">
-      <div class="ftext"><h3 class="display">Dynamic per band</h3><p>Every band can compress or expand, cut or boost, listening to itself, the side chain or another track.</p></div>
+      <div class="ftext"><h3>Dynamic per band</h3><p>Every band can compress or expand, cut or boost, listening to itself, the side chain or another track.</p></div>
       <div class="fmedia"><img class="fpic" src="../images/plugins/bloodhound/shot-bloodhound-fetch.jpg" alt="DH-BloodHound-EQ: Dynamic per band" loading="lazy"></div>
     </div>
     <div class="feature">
-      <div class="ftext"><h3 class="display">Three phase modes</h3><p>ZERO LAT, NATURAL (analog-shaped curves with no latency) and LINEAR phase.</p></div>
+      <div class="ftext"><h3>Three phase modes</h3><p>ZERO LAT, NATURAL (analog-shaped curves with no latency) and LINEAR phase.</p></div>
       <div class="fmedia"><img class="fpic" src="../images/plugins/bloodhound/shot-bloodhound-large.jpg" alt="DH-BloodHound-EQ: Three phase modes" loading="lazy"></div>
     </div>
     <div class="feature flip">
-      <div class="ftext"><h3 class="display">Masking and FETCH</h3><p>Every Bloodhound shows which other tracks mask it and where. FETCH adds the cuts for you, live or as a snapshot, with priorities so the right track gives way.</p></div>
+      <div class="ftext"><h3>Masking and FETCH</h3><p>Every Bloodhound shows which other tracks mask it and where. FETCH adds the cuts for you, live or as a snapshot, with priorities so the right track gives way.</p></div>
       <div class="fmedia"><img class="fpic" src="../images/plugins/bloodhound/shot-bloodhound-fetch.jpg" alt="DH-BloodHound-EQ: Masking and FETCH" loading="lazy"></div>
     </div>
     <div class="feature">
-      <div class="ftext"><h3 class="display">Auto gain</h3><p>Keeps the level the same as you EQ, so you hear the change, not the volume.</p></div>
+      <div class="ftext"><h3>Auto gain</h3><p>Keeps the level the same as you EQ, so you hear the change, not the volume.</p></div>
       <div class="fmedia"><img class="fpic" src="../images/plugins/bloodhound/shot-bloodhound-fetch.jpg" alt="DH-BloodHound-EQ: Auto gain" loading="lazy"></div>
     </div>
   </div></section>
 
   <section class="gallery"><div class="wrap">
-    <h2 class="display">Pictures</h2>
+    <h2>Pictures</h2>
     <div class="gimgs"><img src="../images/plugins/bloodhound/shot-bloodhound-fetch.jpg" alt="DH-BloodHound-EQ picture 1" loading="lazy"><img src="../images/plugins/bloodhound/shot-bloodhound-large.jpg" alt="DH-BloodHound-EQ picture 2" loading="lazy"></div>
   </div></section>
 
   <section class="related"><div class="wrap">
-    <h2 class="display">More from the Dog House Suite</h2>
+    <h2>More from the Dog House Suite</h2>
     <div class="pgrid">
-      <a class="pcard" href="angry-dog.html" data-series="doghouse">
+      <a class="pcard s-doghouse" href="angry-dog.html" data-series="doghouse">
         <div class="pmedia"><img class="shot" src="../images/plugins/angry-dog/shot-angrydog-main.jpg" alt="DH-AngryDog-Comp plugin"></div>
         <div class="pbody">
-          <div class="pmeta"><span class="badge s-doghouse">Dog House Suite</span><span>Compressor</span></div>
-          <h3 class="display">DH-AngryDog-Comp</h3>
-          <p>A compressor with attitude, in the spirit of the famous Distressor, with a side chain that sniffs out exactly what you want it to react to.</p>
+          <h3>DH-<wbr>AngryDog-<wbr>Comp</h3>
+          <p class="pkind"><span class="sname">Dog House Suite</span><span>Compressor</span></p>
+          <p class="ptag">A compressor with attitude, in the spirit of the famous Distressor, with a side chain that sniffs out exactly what you want it to react to.</p>
         </div>
       </a>
-      <a class="pcard" href="the-surgeon.html" data-series="doghouse">
+      <a class="pcard s-doghouse" href="the-surgeon.html" data-series="doghouse">
         <div class="pmedia"><img class="shot" src="../images/plugins/the-surgeon/shot-gui-1056x736.jpg" alt="DH-Surgeon-ResonanceSuppressor plugin"></div>
         <div class="pbody">
-          <div class="pmeta"><span class="badge s-doghouse">Dog House Suite</span><span>Resonance suppressor</span></div>
-          <h3 class="display">DH-Surgeon-ResonanceSuppressor</h3>
-          <p>Finds and removes harsh resonances as the music changes, plus four EQ bands on the analyser.</p>
+          <h3>DH-<wbr>Surgeon-<wbr>ResonanceSuppressor</h3>
+          <p class="pkind"><span class="sname">Dog House Suite</span><span>Resonance suppressor</span></p>
+          <p class="ptag">Finds and removes harsh resonances as the music changes, plus four EQ bands on the analyser.</p>
         </div>
       </a>
-      <a class="pcard" href="guard-dog.html" data-series="doghouse">
+      <a class="pcard s-doghouse" href="guard-dog.html" data-series="doghouse">
         <div class="pmedia"><img class="shot" src="../images/plugins/guard-dog/shot-guard-dog-main.jpg" alt="DH-GuardDog-Limiter plugin"></div>
         <div class="pbody">
-          <div class="pmeta"><span class="badge s-doghouse">Dog House Suite</span><span>Limiter</span></div>
-          <h3 class="display">DH-GuardDog-Limiter</h3>
-          <p>A clean true peak limiter. With nothing to limit, the output is bit-identical to the input.</p>
+          <h3>DH-<wbr>GuardDog-<wbr>Limiter</h3>
+          <p class="pkind"><span class="sname">Dog House Suite</span><span>Limiter</span></p>
+          <p class="ptag">A clean true peak limiter. With nothing to limit, the output is bit-identical to the input.</p>
         </div>
       </a>
     </div>
   </div></section>
 
-  <nav class="pnav wrap">
-    <a href="drum-dog.html">← Drum Dog</a>
-    <a href="hush-puppy.html">DD-HushPuppy-GateDucker →</a>
+  <nav class="pnav wrap" aria-label="Other plugins">
+    <a href="drum-dog.html"><span>Previous</span>Drum Dog</a>
+    <a class="next" href="hush-puppy.html"><span>Next</span>DD-<wbr>HushPuppy-<wbr>GateDucker</a>
   </nav>
   <img class="peekpup" src="../images/dogs/pup-20210210_181149.png" alt="" aria-hidden="true">
 </main>
 <footer><div class="wrap">
   <img src="../images/rodog-logo.png" alt="RoDog Audio">
   <ul class="flinks"><li><a href="../licence.html">Licence</a></li><li><a href="../privacy.html">Privacy</a></li><li><a href="../refunds.html">Refunds</a></li><li><a href="../support.html">Support</a></li></ul>
-  <span>The Dog House · © 2026 RoDog Audio</span>
+  <span>© 2026 RoDog Audio</span>
 </div></footer>
-<script src="../site.js?v=66575029"></script>
+<script src="../site.js?v=61ea4c26"></script>
 </body>
 </html>

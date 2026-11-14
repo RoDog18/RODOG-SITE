@@ -10,3 +10,7 @@ The pages are generated. Edit `tools/plugins.py` (the plugin catalogue) or `tool
 - The walkthrough video sits above the Features section (placeholder until a video is added).
 - Screenshots: `tools/shots.sh <repo> ...` builds each plugin's Shot tool (needs JUCE at /home/user/JUCE) and
   writes PNGs to /home/user/shots/<repo>; `assemble.sh` picks them up.
+- The Kennel download links: set `KENNEL_DOWNLOADS` at the bottom of `plugins.py`. Until both are set the buttons show as
+  not yet available, with a note that the links go live at release.
+- Optional per plugin: `price="A$49"` shows in the buy box; `video="images/plugins/<slug>/walkthrough.mp4"` replaces the
+  "Walkthrough video coming soon" still above Features.

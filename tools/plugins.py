@@ -324,3 +324,6 @@ EFFECTS = [
  ("samp", "Samplers"),
  ("excite", "Exciters"),
 ]
+
+# The Kennel download links. Paste each URL in when it is ready; until then the buttons show as not yet available.
+KENNEL_DOWNLOADS = dict(mac="", windows="")
