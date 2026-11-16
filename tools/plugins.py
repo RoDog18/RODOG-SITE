@@ -93,10 +93,10 @@ PLUGINS = [
       tag="A compressor with attitude, in the spirit of the famous Distressor, with a side chain that sniffs out exactly what you want it to react to.",
       art=[],
       features=[
-       ("Eight ratios, eight characters", "No threshold knob: each RATIO has its own threshold, knee and timing. 2:1 glues, 10:1 OPTO lets go like an optical leveller, NUKE is a brick wall. Drive it with INPUT and it bites harder.", "shot-angrydog-main.jpg"),
-       ("RABID", "The famous all-buttons-in trick, on any ratio. BITE and GROWL add more attitude when you want it.", "shot-angrydog-rabid.jpg"),
+       ("Eight ratios, eight characters", "No threshold knob: each RATIO has its own threshold, knee and timing. 2:1 glues, 10:1 OPTO lets go like an optical leveller, NUKE is a brick wall. Drive it with INPUT and it bites harder.", "shot-main.jpg"),
+       ("RABID", "The famous all-buttons-in trick, on any ratio. BITE and GROWL add more attitude when you want it.", "shot-rabid.jpg"),
        ("Colour that never smears", "DIST 2, DIST 3, GROWL and HEADROOM only add harmonics, which grow as it works harder."),
-       ("SNIFF side chain", "Filter the key with HP and BAND, use an external side chain, and listen to the key or the difference.", "shot-angrydog-sniff.jpg"),
+       ("SNIFF side chain", "Filter the key with HP and BAND, use an external side chain, and listen to the key or the difference.", "shot-sniff.jpg"),
        ("CHAIN and AUTO GAIN", "CHAIN keeps the lows dry, AUTO GAIN takes the input back off at the output, and QUALITY runs it at 1x, 2x or 4x."),
       ]),
  dict(slug="howl-room", name="HOWL-Room-Reverb", repo="howl-room", series="howl", effect="verb", type="Room reverb",
@@ -324,3 +324,6 @@ EFFECTS = [
  ("samp", "Samplers"),
  ("excite", "Exciters"),
 ]
+
+# The Kennel download links. Paste each URL in when it is ready; until then the buttons show as not yet available.
+KENNEL_DOWNLOADS = dict(mac="", windows="")

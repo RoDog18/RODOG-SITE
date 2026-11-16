@@ -2,7 +2,7 @@
 document.querySelectorAll('.tab').forEach(function (tab) {
   tab.addEventListener('click', function () {
     var pick = tab.dataset.tab;
-    document.querySelectorAll('.tab').forEach(function (t) { t.classList.toggle('on', t === tab); });
+    document.querySelectorAll('.tab').forEach(function (t) { t.setAttribute('aria-selected', t === tab ? 'true' : 'false'); });
     document.getElementById('by-effect').hidden = pick !== 'all';
     document.getElementById('by-series').hidden = pick === 'all';
     document.querySelectorAll('#by-series .pcard').forEach(function (c) { c.hidden = c.dataset.series !== pick; });
